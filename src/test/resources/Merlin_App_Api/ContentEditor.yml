@@ -1,0 +1,46 @@
+get_Content:
+  endpoint: '/contenteditor/templatecontentblock/%7B%22cbId%22:%22CB_ID%22,%22formParams%22:%7B%22lpId%22:%22PROJECT_ID%22%7D%7D/action/contenteditor/editor/asset/get/1234'
+  statusCode: 200
+  headerMap: 
+  requestBody: ""
+
+post_Content:
+  endpoint: '/lp/contentblock/save?contentBlockId=CB_ID'
+  statusCode: 302
+  requestBody: ""
+  
+color_API:
+  endpoint: '/contenteditor/templatecontentblock/%7B"cbId":"CB_ID","formParams":%7B"lpId":"PROJECT_ID"%7D%7D/action/contenteditor/colorpicker/get/1234'
+  statusCode: 200
+  headerMap: 
+  requestBody: ""  
+  
+font_API:
+  endpoint: '/contenteditor/templatecontentblock/%7B%22cbId%22:%22CB_ID%22,%22formParams%22:%7B%22lpId%22:%22PROJECT_ID%22%7D%7D/action/contenteditor/font/details/get/1234'
+  statusCode: 200
+  headerMap: 
+  requestBody: ""  
+
+pstyle_API:
+  endpoint: '/contenteditor/templatecontentblock/%7B%22cbId%22:%22CB_ID%22,%22formParams%22:%7B%22lpId%22:%22PROJECT_ID%22%7D%7D/action/contenteditor/divstyles/get/1234'
+  statusCode: 200
+  headerMap: 
+  requestBody: "" 
+
+tstyle_API:
+  endpoint: '/contenteditor/templatecontentblock/%7B%22cbId%22:%22CB_ID%22,%22formParams%22:%7B%22lpId%22:%22PROJECT_ID%22%7D%7D/action/contenteditor/textstyles/get/1234'
+  statusCode: 200
+  headerMap: 
+  requestBody: "" 
+  
+temp_info_API:
+  endpoint: '/lp/project/listTemplates?lpId=PROJECT_ID'
+  statusCode: 200
+  headerMap: 
+  requestBody: "" 
+  
+cb_info_API:
+  endpoint: '/lp/contentblocks/get?lpId=PROJECT_ID&templateId=TEMPLATE_ID'
+  statusCode: 200
+  headerMap: 
+  requestBody: "" 

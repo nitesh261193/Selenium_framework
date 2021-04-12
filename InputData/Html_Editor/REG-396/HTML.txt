@@ -1,0 +1,27 @@
+<html><head></head><body class=""><div id="private"><header class="" style="position: relative;">
+        <div class="container">
+            <h1 class="" style="position: relative;"><a style="position: relative;" class=""><img src="nh_shared_assets/012_indd_image/agent_image_blank_white1.png" alt="Image not available" class="" style="position: relative; height: 48px;"></a></h1>
+        </div>
+    </header>    
+    <div class="content">
+        <div class="container"><div style="text-align: center; position: relative;" class=""><h2 style="margin: 10px 0px 0px; display: inline-block; text-align: center; font-size: 34px; line-height: 56px; color: black; border-bottom: 2px solid #555555; position: relative;" class="">Api_Testing_random</h2></div>
+            <div style="border: ridge; text-align: right; position: relative;" spacebeforeonfirst="false" ignoreemptylines="false" donotwrap="false" class="">
+            </div>           
+            
+                </div>
+    </div>  
+    <footer class="" style="position: relative;">
+        <div class="container" style="position: relative;">
+            <span class="" style="position: relative;">Copyright. All rights are reserved.</span>
+        </div>    
+    </footer>
+<style>
+    *{ padding: 0; margin: 0; }
+    header , footer { padding: 10px 0; color: #fff; background: #3B647C; }
+    footer span { font-size: 24px; }
+    .banner { margin: 0 0 20px; }
+    .banner img { max-width: 100%; width: 100%; }
+    .content { margin: 0; background: rgba(0,0,0,0.5) url(assets/img/banner_2.png) center top no-repeat; background-size: cover; }
+    .container{ margin: auto; width: 100%; }    
+</style>
+</div></body></html>

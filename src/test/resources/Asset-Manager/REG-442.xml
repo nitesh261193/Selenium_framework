@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="REG_442-ASSET_MANAGER_PRODUCT_INTEGRATION">
+	<parameter name="reg_Run" value="false" />
+	<test name="LOGIN">
+		<groups>
+			<define name="all">
+				<include name="Login" />
+				<include name="Get_Build_Info" />
+			</define>
+			<dependencies>
+				<group name="Get_Build_Info" depends-on="Login" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+		</classes>
+	</test>
+	<test name="UPDATE_ASSET_MANAGER_VERSION">
+		<groups>
+			<define name="all">
+				<include name="Set_Asset_Manager_Version" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Settings_Tests" />
+		</classes>
+	</test> 
+	<test name="OPEN_DAM">
+		<groups>
+			<define name="all">
+				<include name="Open_Asset_Management" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+		</classes>
+	</test>
+
+	<test name="CREATE_NEW_FOLDER">
+		<parameter name="create_Name" value="automation_folder_random" />
+		<parameter name="verify_Name" value="automation_folder_random" />
+		<groups>
+			<define name="all">
+				<include name="Create_New_Folder" />
+				<include name="Verify_File_Or_Folder_Existence" />
+			</define>
+			<dependencies>
+				<group name="Verify_File_Or_Folder_Existence" depends-on="Create_New_Folder" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	
+	<test name="OPEN_DETAILS_PANE_AND_VERIFY_DETAILS">
+	<parameter name= "verify_Name" value="automation_folder_random" />
+	<parameter name= "verify_Location" value="/nDrive/automation_folder_random" />
+		<groups>
+			<define name="all">
+				<include name="Open_Details_Pane" />
+				<include name="Verify_Details_Pane_Info" />
+				<include name= "Close_Details_Pane" />
+			</define>
+			<dependencies>
+				<group name="Verify_Details_Pane_Info" depends-on="Open_Details_Pane" />
+				<group name="Close_Details_Pane" depends-on="Verify_Details_Pane_Info" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="CREATE_SUB_FOLDER">
+		<parameter name="create_Name" value="automation_folder_random_2" />
+		<parameter name="verify_Name" value="automation_folder_random_2" />
+		<groups>
+			<define name="all">
+				<include name="Create_New_Folder" />
+				<include name="Verify_File_Or_Folder_Existence" />
+			</define>
+			<dependencies>
+				<group name="Verify_File_Or_Folder_Existence" depends-on="Create_New_Folder" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="OPEN_FOLDER">
+		<parameter name="open_Name" value="automation_folder_random" />
+		<groups>
+			<define name="all">
+				<include name="Open_Folder" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="UPLOAD_MULTIPLE_FILE">
+		<parameter name="upload_Name"
+			value="Automation_Text_File.txt,Automation_Html_File.html,Automation_Image_File.png,Automation_Indd_File.indd,Automation_Pdf_File.pdf,Automation_Zip_File.zip" />
+		<parameter name="verify_Name"
+			value="Automation_Text_File.txt,Automation_Html_File.html,Automation_Image_File.png,Automation_Indd_File.indd,Automation_Pdf_File.pdf,Automation_Zip_File.zip" />
+		<groups>
+			<define name="all">
+				<include name="Upload_File" />
+				<include name="Verify_File_Or_Folder_Existence" />
+			</define>
+			<dependencies>
+				<group name="Verify_File_Or_Folder_Existence" depends-on="Upload_File" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="PREVIEW_FILE">
+		<parameter name="preview_Name"
+			value="Automation_Image_File.png,Automation_Pdf_File.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Preview_File" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="OPEN_FILE">
+		<parameter name="open_File_Name"
+			value="Automation_Html_File.html,Automation_Pdf_File.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Open_File" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="EDIT_FILE">
+		<parameter name="edit_File_Name"
+			value="Automation_Html_File.html,Automation_Indd_File.indd" />
+		<groups>
+			<define name="all">
+				<include name="Edit_File" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test> 
+	<test name="COPY_FILE">
+		<parameter name="copy_Name" value="Automation_Image_File.png" />
+		<parameter name="verify_Name" value="Automation_Image_File.png" />
+		<groups>
+			<define name="all">
+				<include name="Copy_Folder_Or_File" />
+				<include name="Verify_File_Or_Folder_Existence" />
+			</define>
+			<dependencies>
+				<group name="Verify_File_Or_Folder_Existence" depends-on="Copy_Folder_Or_File" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="RENAME_FILE">
+		<parameter name="existing_Name" value="Automation_Image_File Copy.png" />
+		<parameter name="name_To_Change" value="Automation_Image_File_Renamed" />
+		<parameter name="verify_Name" value="Automation_Image_File_Renamed.png" />
+		<groups>
+			<define name="all">
+				<include name="Rename_Folder_Or_File" />
+				<include name="Verify_File_Or_Folder_Existence" />
+			</define>
+			<dependencies>
+				<group name="Verify_File_Or_Folder_Existence" depends-on="Rename_Folder_Or_File" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	 <test name="DOWNLOAD_FILE">
+		<parameter name="download_Name" value="Automation_Image_File_Renamed.png" />
+		<groups>
+			<define name="all">
+				<include name="Download_Folder_Or_File" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="UNZIP_FILE_HERE">
+		<parameter name="file_Name_For_Unzip" value="Automation_Zip_File.zip" />
+		<parameter name="verify_Name" value="Automation_Zip_File" />
+		<groups>
+			<define name="all">
+				<include name="Unzip_Here" />
+				<include name="Verify_File_Or_Folder_Existence" />
+
+			</define>
+			<dependencies>
+				<group name="Verify_File_Or_Folder_Existence" depends-on="Unzip_Here" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="VALIDATE_UNZIP_HERE_FILE_CONTENT">
+		<parameter name="open_Name" value="Automation_Zip_File" />
+		<parameter name="verify_Name" value="Automation_Image_File.png" />
+		<parameter name="navigate_Folder_Name" value="automation_folder_random" />
+		<groups>
+			<define name="all">
+				<include name="Open_Folder" />
+				<include name="Verify_File_Or_Folder_Existence" />
+				<include name="Navigate_To_Folder_Using_Bread_Crumb" />
+			</define>
+			<dependencies>
+				<group name="Verify_File_Or_Folder_Existence" depends-on="Open_Folder" />
+				<group name="Navigate_To_Folder_Using_Bread_Crumb" depends-on="Verify_File_Or_Folder_Existence" />
+				
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="DELETE_UNZIPED_FOLDER">
+		<parameter name="delete_Name" value="Automation_Zip_File" />
+		<groups>
+			<define name="all">
+				<include name="Delete_File_Or_Folder" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="UNZIP_FILE_IN_NEW_FOLDER">
+		<parameter name="file_Name_For_Unzip" value="Automation_Zip_File.zip" />
+		<parameter name="verify_Name" value="Automation_Zip_File" />
+		<parameter name="open_Name" value="Automation_Zip_File" />
+		<groups>
+			<define name="all">
+				<include name="Unzip_In_New_Folder" />
+				<include name="Verify_File_Or_Folder_Existence" />
+				<include name="Open_Folder" />
+
+			</define>
+			<dependencies>
+				<group name="Verify_File_Or_Folder_Existence" depends-on="Unzip_In_New_Folder" />
+				<group name="Open_Folder" depends-on="Verify_File_Or_Folder_Existence" />
+			
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="VALIDATE_UNZIP_IN_NEW_FOLDER_FILE_CONTENT">
+		<parameter name="open_Name" value="Automation_Zip_File" />
+		<parameter name="verify_Name" value="Automation_Image_File.png" />
+		<parameter name="navigate_Folder_Name" value="automation_folder_random" />
+		<groups>
+			<define name="all">
+				<include name="Open_Folder" />
+				<include name="Verify_File_Or_Folder_Existence" />
+				<include name="Navigate_To_Folder_Using_Bread_Crumb" />
+			</define>
+			<dependencies>
+				<group name="Verify_File_Or_Folder_Existence" depends-on="Open_Folder" />
+				<group name="Navigate_To_Folder_Using_Bread_Crumb" depends-on="Verify_File_Or_Folder_Existence" />
+				
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="MOVE_FILE">
+		<parameter name="move_File_Name" value="Automation_Image_File_Renamed.png" />
+		<parameter name="folder_Name_To_Move" value="automation_folder_random_2" />
+		<parameter name="navigate_Folder_Name" value="nDrive" />
+		<parameter name="open_Name" value="automation_folder_random_2" />
+		<parameter name="verify_Name" value="Automation_Image_File_Renamed.png" />
+		<groups>
+			<define name="all">
+				<include name="Move_Folder_Or_File" />
+				<include name="Navigate_To_Folder_Using_Bread_Crumb" />
+				<include name="Open_Folder" />
+				<include name="Verify_File_Or_Folder_Existence" />
+			</define>
+			<dependencies>
+				<group name="Navigate_To_Folder_Using_Bread_Crumb" depends-on="Move_Folder_Or_File" />
+				<group name="Open_Folder" depends-on="Navigate_To_Folder_Using_Bread_Crumb" />
+			    <group name="Verify_File_Or_Folder_Existence" depends-on="Open_Folder" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="CREATE_COLLECTION_USING_FILE">
+		<parameter name="file_Name_To_Add_In_Collection" value="Automation_Image_File_Renamed.png" />
+		<parameter name="collection_Name" value="automation_collection_random" />
+		<parameter name="item_Name" value="Collections" />
+		<parameter name="open_Name" value="automation_collection_random" />
+		<parameter name="verify_Name" value="Automation_Image_File_Renamed.png" />
+
+		<groups>
+			<define name="all">
+				<include name="Create_Collection" />
+				<include name="Navigate_To_Collections_Or_Folders" />
+				<include name="Open_Folder" />
+				<include name="Verify_File_Or_Folder_Existence" />
+			</define>
+			<dependencies>
+				<group name="Navigate_To_Collections_Or_Folders" depends-on="Create_Collection" />
+				<group name="Open_Folder" depends-on="Navigate_To_Collections_Or_Folders" />
+				<group name="Verify_File_Or_Folder_Existence" depends-on="Open_Folder" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="NAVIGATE_TO_FOLDERS">
+		<parameter name="item_Name" value="Folders" />
+
+		<groups>
+			<define name="all">
+				<include name="Navigate_To_Collections_Or_Folders" />
+
+			</define>
+
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="ADD_TO_COLLECTION">
+		<parameter name="file_Name_To_Add_In_Collection" value="automation_folder_random" />
+		<parameter name="collection_Name_To_ADD" value="automation_collection_random" />
+		<parameter name="item_Name" value="Collections" />
+		<parameter name="open_Name" value="automation_collection_random" />
+		<parameter name="verify_Name" value="automation_folder_random" />
+
+		<groups>
+			<define name="all">
+				<include name="Add_Folder_Or_File_To_Collection" />
+				<include name="Navigate_To_Collections_Or_Folders" />
+				<include name="Open_Folder" />
+				<include name="Verify_File_Or_Folder_Existence" />
+			</define>
+			<dependencies>
+				<group name="Navigate_To_Collections_Or_Folders" depends-on="Add_Folder_Or_File_To_Collection" />
+				<group name="Open_Folder" depends-on="Navigate_To_Collections_Or_Folders" />
+				<group name="Verify_File_Or_Folder_Existence" depends-on="Open_Folder" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="DELETE_COLLECTION">
+		<parameter name="item_Name" value="Collections" />
+
+		<parameter name="delete_Name" value="automation_collection_random" />
+		<groups>
+			<define name="all">
+				<include name="Navigate_To_Collections_Or_Folders" />
+				<include name="Delete_File_Or_Folder" />
+			</define>
+			<dependencies>
+				<group name="Delete_File_Or_Folder" depends-on="Navigate_To_Collections_Or_Folders" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="NAVIGATE_TO_FOLDERS_AGAIN">
+		<parameter name="item_Name" value="Folders" />
+
+		<groups>
+			<define name="all">
+				<include name="Navigate_To_Collections_Or_Folders" />
+
+			</define>
+
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="SEND_FOLDER_AND_VALIDATE">
+		<parameter name="file_Name_To_Send" value="automation_folder_random" />
+		<parameter name="supplier_Name" value="perf_sftp_win4" />
+		<parameter name="email_Id" value="merlinappsautomation@gmail.com" />
+		<parameter name="email_Password" value="Naehas@2020" />
+		<parameter name="email_Subject" value="Files successfully sent to perf_sftp_win4" />
+		<parameter name="email_Message"
+			value="The following item(s) have been successfully delivered to perf_sftp_win4" />
+		<groups>
+			<define name="all">
+				<include name="Send_Folder_Or_File" />
+				<include name="Check_Mail" />
+			</define>
+			<dependencies>
+				<group name="Check_Mail" depends-on="Send_Folder_Or_File" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="SHARE_FOLDER_AND_VALIDATE_EMAIL">
+		<parameter name="file_Name_To_Share" value="automation_folder_random" />
+		<parameter name="email_Id" value="merlinappsautomation@gmail.com" />
+		<parameter name="email_Password" value="Naehas@2020" />
+		<parameter name="email_Subject" value="qaadmin@naehas.com shared a link with you" />
+		<parameter name="email_Message"
+			value="Hi, qaadmin@naehas.com has shared a link with you and it is valid" />
+		<groups>
+			<define name="all">
+				<include name="Share_Folder_Or_File" />
+				<include name="Check_Mail" />
+			</define>
+			<dependencies>
+				<group name="Check_Mail" depends-on="Share_Folder_Or_File" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="DELETE_FOLDER">
+		<parameter name="delete_Name" value="automation_folder_random" />
+		<groups>
+			<define name="all">
+				<include name="Delete_File_Or_Folder" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+	<test name="DELETE_SUB_FOLDER">
+		<parameter name="delete_Name" value="automation_folder_random_2" />
+		<groups>
+			<define name="all">
+				<include name="Delete_File_Or_Folder" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.assetmanager.Asset_Manager_Ui" />
+		</classes>
+	</test>
+</suite>

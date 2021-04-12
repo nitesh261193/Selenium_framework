@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="REG_651-OFFER_TYPE_VALIDATION_TEST_CASES">
+   <parameter name="reg_Run" value="false" />
+   <test name="LOGIN">
+      <groups>
+         <define name="all">
+            <include name="Login" />
+            <include name="Get_Build_Info" />
+         </define>
+         <dependencies>
+            <group name="Get_Build_Info" depends-on="Login" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+      </classes>
+   </test>
+    <test name="VALIDATE_DB_NAME_FIELD_NAMING">
+      <parameter name="is_Displayed" value="true" />
+      <parameter name="offer_Type_Name" value="OFFER_TYPE_IN_USE_REG_651" />
+      <parameter name="group_Name" value="OFFER_GROUP_REG_651" />
+      <parameter name="table_Name" value="Group" />
+      <parameter name="column_Name" value="Group Name" />
+      <parameter name="db_Name" value="Inavlid Test Name" />
+      <parameter name="db_Name_Check" value="yes" />
+      <groups>
+         <define name="all">
+            <include name="Open_Offer_Type_Page_And_Validate" />
+            <include name="Open_Offer_Type_Details_Page" />
+            <include name="Open_Offer_Group_Details_Page" />
+            <include name="Add_Group_Data_Field" />
+         </define>
+         <dependencies>
+            <group name="Open_Offer_Type_Details_Page" depends-on="Open_Offer_Type_Page_And_Validate" />
+            <group name="Open_Offer_Group_Details_Page" depends-on="Open_Offer_Type_Details_Page" />
+            <group name="Add_Group_Data_Field" depends-on="Open_Offer_Group_Details_Page" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   </suite>

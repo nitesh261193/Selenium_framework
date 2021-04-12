@@ -1,0 +1,7 @@
+perf:
+  proofing_url: 'https://perf.naehas.com/'
+  username: 'jsmith'
+  password: 'a'
+  indd:
+    indd_url:'https://perf.naehas.com/inddeditor/'
+    indd_version:v131    

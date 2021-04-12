@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="REG_622-OFFER_TYPE_CREATION_TEST_CASES">
+   <parameter name="reg_Run" value="false" />
+   <test name="LOGIN">
+      <groups>
+         <define name="all">
+            <include name="Login" />
+            <include name="Get_Build_Info" />
+         </define>
+         <dependencies>
+            <group name="Get_Build_Info" depends-on="Login" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+      </classes>
+   </test>
+   <test name="DISABLE_ACTIVE_OFFER_TYPE">
+      <parameter name="is_Displayed" value="true" />
+      <parameter name="offer_Type_Name" value="OFFER_TYPE_IN_USE_REG_621" />
+      <parameter name="enabled_Offer_Type" value="false" />
+      <groups>
+         <define name="all">
+            <include name="Open_Offer_Type_Page_And_Validate" />
+            <include name="Open_Offer_Type_Details_Page" />
+            <include name="Enable_Disable_Offer_Types" />
+         </define>
+         <dependencies>
+            <group name="Open_Offer_Type_Details_Page" depends-on="Open_Offer_Type_Page_And_Validate" />
+            <group name="Enable_Disable_Offer_Types" depends-on="Open_Offer_Type_Details_Page" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="VALIDATE_OFFER_TYPE_LISTING_UNDER_CREATE_OFFER_MODAL">
+      <parameter name="offer_Type" value="OFFER_TYPE_IN_USE_REG_621" />
+      <parameter name="is_Present" value="false" />
+      <groups>
+         <define name="all">
+            <include name="Open_Offers_Page" />
+            <include name="Validate_Offer_Type_Under_Offer_Creation" />
+         </define>
+         <dependencies>
+            <group name="Validate_Offer_Type_Under_Offer_Creation" depends-on="Open_Offers_Page" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offers" />
+      </classes>
+   </test>
+   <test name="ENABLE_OFFER_TYPE">
+      <parameter name="is_Displayed" value="true" />
+      <parameter name="offer_Type_Name" value="OFFER_TYPE_IN_USE_REG_621" />
+      <parameter name="enabled_Offer_Type" value="true" />
+      <groups>
+         <define name="all">
+            <include name="Open_Offer_Type_Page_And_Validate" />
+            <include name="Open_Offer_Type_Details_Page" />
+            <include name="Enable_Disable_Offer_Types" />
+         </define>
+         <dependencies>
+            <group name="Open_Offer_Type_Details_Page" depends-on="Open_Offer_Type_Page_And_Validate" />
+            <group name="Enable_Disable_Offer_Types" depends-on="Open_Offer_Type_Details_Page" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="VALIDATE_MANDATORY_FILED_FOR_OFFER_CREATION">
+      <parameter name="offer_Type" value="OFFER_TYPE_IN_USE_REG_621" />
+      <parameter name="offer_Name" value="Offer Test Fields" />
+      <parameter name="offer_Code" value="Offer Test Code" />
+      <parameter name="start_Date" value="12/30/2020" />
+      <parameter name="end_Date" value="15/30/2020" />
+      <groups>
+         <define name="all">
+            <include name="Open_Offers_Page" />
+            <include name="Validated_Mandatory_Filed_For_Offer_Creation" />
+         </define>
+         <dependencies>
+            <group name="Validated_Mandatory_Filed_For_Offer_Creation" depends-on="Open_Offers_Page" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offers" />
+      </classes>
+   </test>
+   <!--<test name="GET_OFFER_TYPE_DETAILS">
+      <parameter name="is_Displayed" value="true" />
+      <parameter name="offer_Type_Name" value="OFFER_TYPE_IN_USE_REG_621" />
+      <groups>
+         <define name="all">
+            <include name="Open_Offer_Type_Page_And_Validate" />
+            <include name="Open_Offer_Type_Details_Page" />
+            <include name="Get_Offer_Type_Data" />
+         </define>
+         <dependencies />
+         		<group name="Open_Offer_Type_Details_Page" depends-on="Open_Offer_Type_Page_And_Validate" />
+         		<group name="Get_Offer_Type_Data" depends-on="Open_Offer_Type_Details_Page" />
+         <dependencies />
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="CREATE_NEW_OFFER">
+      <parameter name="offer_Type" value="OFFER_TYPE_IN_USE_REG_621" />
+      <parameter name="offer_Name" value="Offer_label" />
+      <parameter name="offer_Code" value="Code_random" />
+      <groups>
+         <define name="all">
+            <include name="Create_New_Offer" />
+         </define>
+         <dependencies />
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offers" />
+      </classes>
+   </test>
+    <test name="VALIDATE_OFFER_DETAILS_PAGE_AND_GROUP_FIELDS">
+      <parameter name="offer_Type" value="OFFER_TYPE_IN_USE_REG_621" />
+      <parameter name="offer_Name" value="Offer_label" />
+      <parameter name="offer_Code" value="Code_random" />
+      <groups>
+         <define name="all">
+            <include name="Create_New_Offer" />
+         </define>
+         <dependencies />
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offers" />
+      </classes>
+   </test> -->
+</suite>

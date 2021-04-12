@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="REG_400_MERGE_SERVER_PRODUCT_INTEGRATION">
+   <parameter name="reg_Run" value="false" />
+   <parameter name="project_Id" value="13208" />
+   <parameter name="project_Name" value="PROJ_IN_USE_PRODUCT_INTEGRATION" />
+   <parameter name="template_Name" value="TEMP_IN_USE_PRODUCT_INTEGRATION" />
+   <test name="LOGIN">
+      <groups>
+         <define name="all">
+            <include name="Login" />
+         </define>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+      </classes>
+   </test>
+  <test name="UPDATE_MERGE_SERVER_VERSION">
+      <parameter name="app_Name" value="Mergeserver" />
+      <groups>
+         <define name="all">
+            <include name="Get_Build_Info" />
+            <include name="Set_App_Version" />
+         </define>
+         <dependencies>
+            <group name="Set_App_Version" depends-on="Get_Build_Info" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Settings" />
+      </classes>
+   </test>
+   <test name="INITIALISATION">
+      <parameter name="api_Name" value="temp_info_API" />
+      <groups>
+         <define name="all">
+            <include name="Get_Template_Ids_For_Merge_Server" />
+         </define>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.melin.apps.api.Dashboard_Api_Util" />
+      </classes>
+   </test>
+   <test name="GENERATE_PROOF">
+      <parameter name="proof_Type" value="AUDIT-INDD" />
+      <parameter name="segment" value="SEGMENT_MERGE_SERVER" />
+      <parameter name="job_Type" value="SoftProof" />
+      <groups>
+         <define name="all">
+            <include name="Open_Project_Page_By_Id" />
+            <include name="Get_Last_JobId_Present_On_Admin_Page" />
+            <include name="Generate_proof" />
+            <include name="Get_JobId_Admin_Page" />
+            <include name="Get_Merge_Server_Job_Id" />
+         </define>
+         <dependencies>
+            <group name="Get_Last_JobId_Present_On_Admin_Page" depends-on="Open_Project_Page_By_Id" />
+            <group name="Generate_proof" depends-on="Get_Last_JobId_Present_On_Admin_Page" />
+            <group name="Get_JobId_Admin_Page" depends-on="Generate_proof" />
+            <group name="Get_Merge_Server_Job_Id" depends-on="Get_JobId_Admin_Page" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Admin_Page" />
+      </classes>
+   </test>
+   <test name="VALIDATE_INDD_JOB_STATUS_ON_MERGE_SERVER">
+      <parameter name="status" value="FINISHED" />
+      <parameter name="job_Type" value="INDD" />
+      <groups>
+         <define name="all">
+            <include name="Open_Merge_Server" />
+            <include name="Open_Master_Task" />
+            <include name="Monitor_Master_task_Job_Status" />
+         </define>
+         <dependencies>
+            <group name="Open_Master_Task" depends-on="Open_Merge_Server" />
+            <group name="Monitor_Master_task_Job_Status" depends-on="Open_Master_Task" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.mergeserver.Merge_Server_Login" />
+         <class name="com.merlin.dashboard.ui.mergeserver.Merge_Server_Task" />
+      </classes>
+   </test>
+   <test name="VERIFY_PROOF_IN_DASHBOARD">
+      <parameter name="Proof_Type" value="AUDIT-INDD" />
+      <groups>
+         <define name="all">
+            <include name="Open_Project_Page_By_Id" />
+            <include name="Validate_Proof_Present_On_Home_Page_With_Job_Id" />
+         </define>
+         <dependencies>
+            <group name="Validate_Proof_Present_On_Home_Page_With_Job_Id" depends-on="Open_Project_Page_By_Id" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+      </classes>
+   </test>
+   <test name="OPEN_INDD_EDITOR">
+      <parameter name="api_Name" value="unlock_template_API" />
+      <groups>
+         <define name="all">
+            <include name="Unlock_Template_Through_Api" />
+            <include name="Open_Project_Template_Page_By_Id" />
+            <include name="Open_Project_Template_Indd_Editor" />
+            <include name="Fetch_Asset_Id_For_Indd_Editor" />
+         </define>
+         <dependencies>
+            <group name="Open_Project_Template_Page_By_Id" depends-on="Unlock_Template_Through_Api" />
+            <group name="Open_Project_Template_Indd_Editor" depends-on="Open_Project_Template_Page_By_Id" />
+            <group name="Fetch_Asset_Id_For_Indd_Editor" depends-on="Open_Project_Template_Indd_Editor" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.inddeditor.Indd_Util" />
+         <class name="com.melin.apps.api.Dashboard_Api_Util" />
+      </classes>
+   </test>
+   <test name="VALIDATE_EDITOR_JOB_OPENING_STATUS_ON_MERGE_SERVER">
+      <parameter name="status" value="FETCHED_VARIABLE_LINKS" />
+      <parameter name="job_Type" value="EDITOR" />
+      <groups>
+         <define name="all">
+            <include name="open_New_Tab" />
+            <include name="Open_Merge_Server" />
+            <include name="Open_Master_Task" />
+            <include name="Monitor_Master_task_Job_Status" />
+         </define>
+         <dependencies>
+            <group name="Open_Merge_Server" depends-on="open_New_Tab" />
+            <group name="Open_Master_Task" depends-on="Open_Merge_Server" />
+            <group name="Monitor_Master_task_Job_Status" depends-on="Open_Master_Task" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.webdriverutilities.Navigate" />
+         <class name="com.merlin.dashboard.ui.mergeserver.Merge_Server_Login" />
+         <class name="com.merlin.dashboard.ui.mergeserver.Merge_Server_Task" />
+      </classes>
+   </test>
+   <test name="CLOSE_INDESIGN_EDITOR_WITHOUT_SAVE">
+      <parameter name="tab_Index" value="1" />
+      <parameter name="stop_On_Fail" value="true" />
+      <parameter name="close_After_Save" value="Yes" />
+      <groups>
+         <define name="all">
+            <include name="Switch_To_Tab" />
+            <include name="Click_On_Close_Button" />
+         </define>
+         <dependencies>
+            <group name="Click_On_Close_Button" depends-on="Switch_To_Tab" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.webdriverutilities.Navigate" />
+         <class name="com.merlin.dashboard.ui.inddeditor.Indd_Top_Panel" />
+      </classes>
+   </test>
+   <test name="VALIDATE_INDD_CLOSE_JOB_STATUS_ON_MERGE_SERVER">
+      <parameter name="status" value="FINISHED" />
+      <parameter name="job_Type" value="EDITOR" />
+      <groups>
+         <define name="all">
+            <include name="Open_Merge_Server" />
+            <include name="Open_Master_Task" />
+            <include name="Monitor_Master_task_Job_Status" />
+         </define>
+         <dependencies>
+            <group name="Open_Master_Task" depends-on="Open_Merge_Server" />
+            <group name="Monitor_Master_task_Job_Status" depends-on="Open_Master_Task" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.mergeserver.Merge_Server_Login" />
+         <class name="com.merlin.dashboard.ui.mergeserver.Merge_Server_Task" />
+      </classes>
+   </test>
+   <test name="PDF_COMPARE">
+      <parameter name="reference_Proof" value="Soft_Proof_Comparison_Base" />
+      <parameter name="candidate_Proof" value="created" />
+      <parameter name="job_Type" value="ProofComparison" />
+      <groups>
+         <define name="all">
+            <include name="Open_Project_Page_By_Id" />
+            <include name="Get_Last_JobId_Present_On_Admin_Page" />
+            <include name="Compare_PDF" />
+            <include name="Get_JobId_Admin_Page" />
+            <include name="Get_Merge_Server_Job_Id" />
+         </define>
+         <dependencies>
+            <group name="Get_Last_JobId_Present_On_Admin_Page" depends-on="Open_Project_Page_By_Id" />
+            <group name="Compare_PDF" depends-on="Get_Last_JobId_Present_On_Admin_Page" />
+            <group name="Get_JobId_Admin_Page" depends-on="Compare_PDF" />
+            <group name="Get_Merge_Server_Job_Id" depends-on="Get_JobId_Admin_Page" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Admin_Page" />
+      </classes>
+   </test>
+   <test name="VALIDATE_COMPARE_JOB_STATUS_ON_MERGE_SERVER">
+      <parameter name="status" value="FINISHED" />
+      <parameter name="job_Type" value="COMPARE" />
+      <groups>
+         <define name="all">
+            <include name="Open_Merge_Server" />
+            <include name="Open_Master_Task" />
+            <include name="Monitor_Master_task_Job_Status" />
+         </define>
+         <dependencies>
+            <group name="Open_Master_Task" depends-on="Open_Merge_Server" />
+            <group name="Monitor_Master_task_Job_Status" depends-on="Open_Master_Task" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.mergeserver.Merge_Server_Login" />
+         <class name="com.merlin.dashboard.ui.mergeserver.Merge_Server_Task" />
+      </classes>
+   </test>
+   <test name="VALIDATE_PDF_COMPARE_JOB_COMPLETED_ON_DASHBOARD">
+      <parameter name="compare_For" value="Differences Found - Please Review" />
+      <groups>
+         <define name="all">
+            <include name="Open_Project_Page_By_Id" />
+            <include name="Validate_Compare_Pdf_Job_In_Dashboard" />
+         </define>
+         <dependencies>
+            <group name="Validate_Compare_Pdf_Job_In_Dashboard" depends-on="Open_Project_Page_By_Id" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Admin_Page" />
+      </classes>
+   </test>
+   <test name="RETIRE_GENERATED_INDD_PROOF">
+      <parameter name="api_Name" value="retire_proof_API" />
+      <groups>
+         <define name="all">
+            <include name="Retire_Proof" />
+         </define>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.melin.apps.api.Dashboard_Api_Util" />
+      </classes>
+   </test>
+   <test name="GENERATE_GMC_SOFTPROOF">
+      <parameter name="proof_Type" value="AUDIT-WFD" />
+      <parameter name="segment" value="SEGMENT_GMC" />
+      <parameter name="job_Type" value="SoftProof" />
+      <groups>
+         <define name="all">
+            <include name="Open_Project_Page_By_Id" />
+            <include name="Get_Last_JobId_Present_On_Admin_Page" />
+            <include name="Generate_proof" />
+            <include name="Get_JobId_Admin_Page" />
+            <include name="Get_Merge_Server_Job_Id" />
+         </define>
+         <dependencies>
+            <group name="Get_Last_JobId_Present_On_Admin_Page" depends-on="Open_Project_Page_By_Id" />
+            <group name="Generate_proof" depends-on="Get_Last_JobId_Present_On_Admin_Page" />
+            <group name="Get_JobId_Admin_Page" depends-on="Generate_proof" />
+            <group name="Get_Merge_Server_Job_Id" depends-on="Get_JobId_Admin_Page" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Admin_Page" />
+      </classes>
+   </test>
+   <test name="VALIDATE_GMC_JOB_STATUS_ON_MERGE_SERVER">
+      <parameter name="status" value="FINISHED" />
+      <parameter name="job_Type" value="GMC" />
+      <groups>
+         <define name="all">
+            <include name="Open_Merge_Server" />
+            <include name="Open_Master_Task" />
+            <include name="Monitor_Master_task_Job_Status" />
+         </define>
+         <dependencies>
+            <group name="Open_Master_Task" depends-on="Open_Merge_Server" />
+            <group name="Monitor_Master_task_Job_Status" depends-on="Open_Master_Task" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.mergeserver.Merge_Server_Login" />
+         <class name="com.merlin.dashboard.ui.mergeserver.Merge_Server_Task" />
+      </classes>
+   </test>
+   <test name="VERIFY_GMC_PROOF_IN_DASHBOARD">
+      <groups>
+         <define name="all">
+            <include name="Open_Project_Page_By_Id" />
+            <include name="Validate_Proof_Present_On_Home_Page_With_Job_Id" />
+         </define>
+         <dependencies>
+            <group name="Validate_Proof_Present_On_Home_Page_With_Job_Id" depends-on="Open_Project_Page_By_Id" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+      </classes>
+   </test>
+   <test name="RETIRE_GENERATED_GMC_PROOF">
+      <parameter name="api_Name" value="retire_proof_API" />
+      <groups>
+         <define name="all">
+            <include name="Retire_Proof" />
+         </define>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.melin.apps.api.Dashboard_Api_Util" />
+      </classes>
+   </test>
+</suite>

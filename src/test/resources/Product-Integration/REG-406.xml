@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="REG_406-INDD_EDITOR_PRODUCT_INTEGRATION">
+	<parameter name="reg_Run" value="false" />
+	<parameter name="project_Id" value="13208" />
+	<parameter name="segment_Name" value="SEGMENT_IN_USE" />
+	<test name="LOGIN">
+		<groups>
+			<define name="all">
+				<include name="Login" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+		</classes>
+	</test>
+ 	<!--<test name="UPDATE_INDD_EDITOR_VERSION">
+		<parameter name="app_Name" value="InDesign Editor" />
+		<parameter name="script" value="true" />
+		<groups>
+			<define name="all">
+				<include name="Get_Build_Info" />
+				<include name="Set_App_Version" />
+			</define>
+			<dependencies>
+				<group name="Set_App_Version" depends-on="Get_Build_Info" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class name="com.merlin.dashboard.ui.Dashboard_Settings" />
+		</classes>
+	</test>-->
+	<test name="INITIALISATION">
+		<parameter name="template_Name" value="TEMP_IN_USE_INDD_EDITOR_FOR_INTEGRATION" />
+		<parameter name="config_Name" value="DashboardApiUtil" />
+		<parameter name="api_Name" value="copy_template_API" />
+		<parameter name="assign" value="true" />
+		<parameter name="copy_Template_Name" value="TEMP_REG_406_random" />
+		<groups>
+			<define name="all">
+				<include name="Copy_Template" />
+				<include name="Assign_Template_To_Segment" />
+			</define>
+			<dependencies>
+				<group name="Assign_Template_To_Segment" depends-on="Copy_Template" />
+				<group name="Get_Build_Info" depends-on="Assign_Template_To_Segment" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+	<!--<test name="OPEN_INDD_EDITOR">
+		<groups>
+			<define name="all">
+				<include name="Open_Project_Template_Page_By_Id" />
+				<include name="Open_Project_Template_Indd_Editor" />
+				<include name="Fetch_Asset_Id_For_Indd_Editor" />
+			</define>
+			<dependencies>
+				<group name="Open_Project_Template_Indd_Editor" depends-on="Open_Project_Template_Page_By_Id" />
+				<group name="Fetch_Asset_Id_For_Indd_Editor" depends-on="Open_Project_Template_Indd_Editor" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Util" />
+		</classes>
+	</test>
+	<test name="CREATE_TEXT_FRAME">
+		<parameter name="height" value="1" />
+		<parameter name="width" value="2" />
+		<parameter name="place_With_Cursor" value="false" />
+		<parameter name="pos_X" value="2" />
+		<parameter name="pos_Y" value="2" />
+		<groups>
+			<define name="all">
+				<include name="Add_Text_Frame" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Left_Panel" />
+		</classes>
+	</test>
+	<test name="SELECT_TEXT_FRAME_AND_EDIT_CONTENT">
+		<parameter name="content_Value" value="Integration_Test" />
+		<groups>
+			<define name="all">
+				<include name="Select_TextFrame" />
+				<include name="Click_On_Edit_Button"/>
+				<include name="Add_Data_In_Content_Editor" />
+			</define>
+			<dependencies>
+				<group name="Click_On_Edit_Button" depends-on="Select_TextFrame"/>
+				<group name="Add_Data_In_Content_Editor" depends-on="Click_On_Edit_Button" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Center_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Right_Panel" />
+			<class name="com.merlin.dashboard.ui.contenteditor.Content_Editor_Ui" />
+		</classes>
+	</test>
+	<test name="VALIDATING_CONTENTS_COMING_IN_INDD_CONTENT_EDITOR">
+		<parameter name="config_Name" value="InddEditor" />
+		<parameter name="api_Name" value="template_info_API" />
+		<groups>
+			<define name="all">
+				<include name="Get_Content_List_Coming_Through_Api" />
+				<include name="Select_Data_In_Editor" />
+				<include name="Validating_Content_Source_Coming_In_Editor" />
+			</define>
+			<dependencies>
+				<group name="Select_Data_In_Editor" depends-on="Get_Content_List_Coming_Through_Api" />
+				<group name="Validating_Content_Source_Coming_In_Editor" depends-on="Get_Content_List_Coming_Through_Api" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Indd_Editor_Api" />
+			<class name="com.merlin.dashboard.ui.contenteditor.Content_Editor_Tiny_Mce" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Content_Editor" />
+		</classes>
+	</test>
+	<test name="SAVE_CONTENT_AND_VALIDATE_DATA_SAVED_DATA">
+		<parameter name="content_Value" value="Random_String" />
+		<parameter name="Frame" value="TextFrame" />
+		<parameter name="FileName" value="EditTextFrame" />
+		<parameter name="base_Filepath" value="InputData/Indd_Editor/REG-406/EditTextFrame_Base.png" />
+		<parameter name="target_Filepath" value="artifact_Folder/EditTextFrame_V2.png" />
+		<groups>
+			<define name="all">
+				<include name="Save_Indd_Content_Editor" />
+				<include name="Download_Template_Frame_Image" />
+				<include name="Compare_Images" />
+			</define>
+			<dependencies>
+				<group name="Download_Template_Frame_Image" depends-on="Save_Indd_Content_Editor" />
+				<group name="Compare_Images" depends-on="Download_Template_Frame_Image" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Right_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Util" />
+			<class name="com.merlin.comparison.Image_Comparison" />
+		</classes>
+	</test>
+	<test name="CREATE_IMAGE_FRAME">
+		<parameter name="height" value="1" />
+		<parameter name="width" value="2" />
+		<parameter name="place_With_Cursor" value="false" />
+		<parameter name="pos_X" value="5" />
+		<parameter name="pos_Y" value="5" />
+		<parameter name="image_Source" value="Shared Assets" />
+		<parameter name="folder" value="012_indd_image" />
+		<parameter name="image" value="InddImage1.png" />
+		<parameter name="Frame" value="InddImage1" />
+		<parameter name="Option" value="Add_Image" />
+		<parameter name="FileName" value="AddImageFrame" />
+		<parameter name="base_Filepath" value="InputData/Indd_Editor/REG-406/AddImageFrame_Base.png" />
+		<parameter name="target_Filepath" value="artifact_Folder/AddImageFrame_V3.png" />
+		<groups>
+			<define name="all">
+				<include name="Click_Add_Image_Button" />
+				<include name="Click_Image_Selection_Dropdown" />
+				<include name="Select_Image_Source" />
+				<include name="Click_On_Select_Button"/>
+				<include name="Add_Image_Frame" />
+				<include name="Download_Template_Frame_Image" />
+				<include name="Compare_Images" />
+			</define>
+			<dependencies>
+				<group name="Click_Image_Selection_Dropdown" depends-on="Click_Add_Image_Button"/>
+				<group name="Select_Image_Source" depends-on="Click_Image_Selection_Dropdown"/>
+				<group name="Click_On_Select_Button" depends-on="Select_Image_Source"/>
+				<group name="Add_Image_Frame" depends-on="Click_On_Select_Button"/>
+				<group name="Download_Template_Frame_Image" depends-on="Add_Image_Frame"/>
+				<group name="Compare_Images" depends-on="Download_Template_Frame_Image"/>
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Left_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Util" />
+			<class name="com.merlin.comparison.Image_Comparison" />
+		</classes>
+	</test>
+	<test name="VALIDATING_IMAGE_LINKS_COMING_IN_INDD_EDITOR">
+		<parameter name="config_Name" value="InddEditor" />
+		<parameter name="api_Name" value="image_links_API" />
+		<parameter name="image_Source" value="Document Links" />
+		<parameter name="image" value="InddImage1.png" />
+		<groups>
+			<define name="all">
+				<include name="Click_Add_Image_Button" />
+				<include name="Click_Image_Selection_Dropdown" />
+				<include name="Select_Image_Source" />
+				<include name="Get_Image_Links_List_Coming_Through_Api" />
+				<include name="Validating_Document_Links_Coming_In_Editor" />
+				<include name="Click_On_Cancel_Button_Image_Frame" />
+			</define>
+			<dependencies>
+				<group name="Click_Image_Selection_Dropdown" depends-on="Click_Add_Image_Button"/>
+				<group name="Select_Image_Source" depends-on="Click_Image_Selection_Dropdown"/>
+				<group name="Get_Image_Links_List_Coming_Through_Api" depends-on="Select_Image_Source"/>
+				<group name="Validating_Document_Links_Coming_In_Editor" depends-on="Get_Image_Links_List_Coming_Through_Api"/>
+				<group name="Click_On_Cancel_Button_Image_Frame" depends-on="Validating_Document_Links_Coming_In_Editor"/>
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Left_Panel" />
+			<class name="com.melin.apps.api.Indd_Editor_Api" />
+		</classes>
+	</test>
+	<test name="VALIDATING_IMAGE_CONTENTS_COMING_IN_INDD_CONTENT_EDITOR">
+		<groups>
+			<define name="all">
+				<include name="Select_TextFrame" />
+				<include name="Click_On_Edit_Button"/>
+				<include name="Validating_Image_Content_Source_Coming_In_Editor"/>
+			</define>
+			<dependencies>
+				<group name="Click_On_Edit_Button" depends-on="Select_TextFrame"/>
+				<group name="Validating_Image_Content_Source_Coming_In_Editor" depends-on="Click_On_Edit_Button"/>
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Center_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Right_Panel" />
+		</classes>
+	</test>
+	<test name="SELECT_IMAGE_FRAME_AND_EDIT_CONTENT">
+		<parameter name="content_Value" value="Integration_Test" />
+		<parameter name="image_Source" value="Document Links" />
+		<parameter name="image" value="BankImage3.png" />
+		<parameter name="Frame" value="BankImage3" />
+		<parameter name="Option" value="Edit_Image" />
+		<parameter name="FileName" value="EditImageFrame" />
+		<parameter name="base_Filepath" value="InputData/Indd_Editor/REG-406/EditImageFrame_Base.png" />
+		<parameter name="target_Filepath" value="artifact_Folder/EditImageFrame_V4.png" />
+		<groups>
+			<define name="all">
+				<include name="Add_Image_From_Asset_Manager" />
+				<include name="Select_Image_Source" />
+				<include name="Click_On_Select_Button"/>
+				<include name="Download_Template_Frame_Image" />
+				<include name="Compare_Images" />
+			</define>
+			<dependencies>
+				<group name="Select_Image_Source" depends-on="Add_Image_From_Asset_Manager" />
+				<group name="Click_On_Select_Button" depends-on="Select_Image_Source" />
+				<group name="Download_Template_Frame_Image" depends-on="Click_On_Select_Button" />
+				<group name="Compare_Images" depends-on="Download_Template_Frame_Image" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Center_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Right_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Left_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Util" />
+			<class name="com.merlin.comparison.Image_Comparison" />
+		</classes>
+	</test> 
+	<test name="PREVIEW_TEMPLATE">
+		<parameter name="content_Value" value="Integration_Test" />
+		<groups>
+			<define name="all">
+				<include name="Click_On_Preview_Button" />
+				<include name="Verify_Text_On_PDF" />
+				<include name="Click_On_Proof_Collaboration_Exit_Button" />
+			</define>
+			<dependencies>
+				<group name="Verify_Text_On_PDF" depends-on="Click_On_Preview_Button" />
+				<group name="Click_On_Proof_Collaboration_Exist_Button" depends-on="Verify_Text_On_PDF" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Top_Panel" />
+			<class name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Top_Panel" />
+			<class name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Center_Panel" />
+			
+		</classes>
+	</test>
+	<test name="CLOSE_INDESIGN_EDITOR_WITH_SAVE">
+	<parameter name="rename_File" value="Xml_Before_Save.xml" />
+	<parameter name="close_After_Save" value="Yes" />
+		<groups>
+			<define name="all">
+				<include name="Get_Indd_Template_Xml" />
+				<include name="Click_On_Save_Button" />
+				<include name="Click_On_Close_Button" />
+			</define>
+			<dependencies>
+				<group name="Click_On_Save_Button" depends-on="Get_Indd_Template_Xml" />
+				<group name="Click_On_Close_Button" depends-on="Click_On_Save_Button" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Util" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Top_Panel" />
+		</classes>
+	</test>
+	<test name="OPEN_INDD_EDITOR_AGAIN">
+		<parameter name="config_Name" value="InddEditor" />
+		<parameter name="api_Name" value="unlock_template_API" />
+		<parameter name="rename_File" value="Xml_After_Save.xml" />
+		<groups>
+			<define name="all">
+				<include name="UnlockTemplate_Through_Api" />
+				<include name="Open_Project_Template_Page_By_Id" />
+				<include name="Open_Project_Template_Indd_Editor" />
+				<include name="Fetch_Asset_Id_For_Indd_Editor" />
+				<include name="Get_Indd_Template_Xml" />
+			</define>
+			<dependencies>
+				<group name="Open_Project_Template_Page_By_Id" depends-on="UnlockTemplate_Through_Api" />
+				<group name="Open_Project_Template_Indd_Editor" depends-on="Open_Project_Template_Page_By_Id" />
+				<group name="Fetch_Asset_Id_For_Indd_Editor" depends-on="Open_Project_Template_Indd_Editor" />
+				<group name="Get_Indd_Template_Xml" depends-on="Open_Project_Template_Indd_Editor" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Indd_Editor_Api" />
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Util" />
+		</classes>
+	</test>
+	<test name="VALIDATE_XML_FOR_SAVED_TEMPLATE">
+		<parameter name="base_Filepath" value="artifact_Folder/Xml_Before_Save.xml" />
+		<parameter name="target_Filepath" value="artifact_Folder/Xml_After_Save.xml" />
+		<groups>
+			<define name="all">
+				<include name="compare_Xmls" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.comparison.Xml_Comparison" />
+		</classes>
+	</test>
+	<test name="CLOSE_INDESIGN_EDITOR_WITHOUT_SAVE">
+		<parameter name="pos_X" value="2" />
+		<parameter name="pos_Y" value="2" />
+		<parameter name="Choice" value="No" />
+		<parameter name="close_After_Save" value="No" />
+		<parameter name="choice" value="No" />
+		<parameter name="close_without_save" value="Yes" />
+		<groups>
+			<define name="all">
+				<include name="Select_TextFrame" />
+				<include name="Edit_Text_Frame_Position" />
+				<include name="Click_On_Close_Button" />
+			</define>
+			<dependencies>
+				<group name="Edit_Text_Frame_Position" depends-on="Select_TextFrame" />
+				<group name="Click_On_Close_Button" depends-on="Edit_Text_Frame_Position" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Center_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Right_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Top_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Util" />
+		</classes>
+	</test>-->
+	<test name="FETCH_XML_AFTER_CLOSE_EDITOR">
+		<parameter name="config_Name" value="InddEditor" />
+		<parameter name="api_Name" value="fetch_asset_id_API" />
+		<parameter name="filename" value="Xml_File.xml" />
+		<groups>
+			<define name="all">
+				<include name="Fetch_Asset_Id_From_Api" />
+				<include name="Trigger_Command_API" />
+				<include name="Trigger_Command_API_1" />
+				<include name="Trigger_Command_API_2" />
+				<include name="Fetch_XML_Through_API" />
+			</define>
+			<dependencies>
+				<group name="Trigger_Command_API" depends-on="Fetch_Asset_Id_From_Api" />
+				<group name="Trigger_Command_API_1" depends-on="Trigger_Command_API" />
+				<group name="Trigger_Command_API_2" depends-on="Trigger_Command_API_1" />
+				<group name="Fetch_XML_Through_API" depends-on="Trigger_Command_API_2" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Indd_Editor_Api" />
+		</classes>
+	</test>
+	<test name="VALIDATE_XML_AFTER_CLOSE">
+		<parameter name="base_Filepath" value="artifact_Folder/Xml_After_Save.xml" />
+		<parameter name="target_Filepath" value="artifact_Folder/Xml_File.xml" />
+		<groups>
+			<define name="all">
+				<include name="compare_Xmls" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.comparison.Xml_Comparison" />
+		</classes>
+	</test>
+	<test name="DELETE_COPIED_TEMPLATE">
+		<parameter name="config_Name" value="DashboardApiUtil" />
+		<parameter name="api_Name" value="remove_template_association_with_project_API" />
+		<parameter name="content_Directory_Name" value="CAMP_IN_USE_PRODUCT_INTEGRATION" />
+		<groups>
+			<define name="all">
+				<include name="Remove_Template_Association_With_Project" />
+				<include name="Delete_Template_From_Content_Directory" />
+			</define>
+			<dependencies>
+				<group name="Delete_Template_From_Content_Directory" depends-on="Remove_Template_Association_With_Project" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+</suite>

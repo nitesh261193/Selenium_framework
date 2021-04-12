@@ -1,0 +1,62 @@
+fetch_asset_id_API:
+  endpoint: '/lp/project/templateeditor?lpId=PROJECT_ID&templateId=TEMPLATE_ID&templateFormatId=TEMPLATEFORMATID&fullURL=https%3A%2F%2Fperf.naehas.com%2FDASHBOARD%2Flp%2Fproject%2FlistTemplates%3FlpId%3DPROJECT_ID'
+  statusCode: 200
+  headerMap: 
+  requestBody: ""
+
+templateFormat_id_API:
+  endpoint: '/lp/template/info?templateId=TEMPLATE_ID&lpId=PROJECT_ID'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+
+indd_content_editor_save_API:
+  endpoint: '/master/services/action/contenteditor/document/save/ASSET_ID'
+  statusCode: 200
+  headerMap: 
+  requestBody: "" 
+  
+
+csv_info_API:
+  endpoint: 'https://proofing.perf.naehas.com/master/services/action/csvInfo?assetId=ASSET_ID&userId=3'
+  statusCode: 200
+  headerMap: 
+  requestBody: "" 
+  
+image_links_API:
+  endpoint: 'https://proofing.perf.naehas.com/master/services/action/links?assetId=ASSET_ID&userId=3'
+  statusCode: 200
+  headerMap: 
+  requestBody: ""
+
+template_info_API:
+  endpoint: 'https://proofing.perf.naehas.com/master/services/action/execute/editor/command'
+  statusCode: 200
+  headerMap: 
+  requestBody: "" 
+  
+unlock_template_API:
+  endpoint: '/lp/template/unlock?lpId=PROJECT_ID&templateId=TEMPLATE_ID'
+  statusCode: 302
+  headerMap:
+  requestBody: ""
+
+Command_API:
+  endpoint: '/master/services/action/execute/editor/command'
+  statusCode: 302
+  headerMap:
+  requestBody: ""
+
+fetch_Xml_API:
+  endpoint: '/master/services/action/openProject/xml?assetId=ASSET_ID&commmand=ORIGINAL&userId=3&version=VERSION'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+
+textframe_Image_API:
+  endpoint: '/master/services/action/links?assetId=ASSET_ID'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+
+

@@ -1,0 +1,102 @@
+unlock_template_API:
+  endpoint: '/lp/template/unlock?lpId=PROJECT_ID&templateId=TEMPLATE_ID'
+  statusCode: 302
+  headerMap:
+  requestBody: ""
+
+lock_template_API:
+  endpoint: '/lp/template/lock?lpId=PROJECT_ID&templateId=TEMPLATE_ID'
+  statusCode: 302
+  headerMap:
+  requestBody: ""
+
+temp_info_API:
+  endpoint: '/lp/project/listTemplates?lpId=PROJECT_ID'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+
+cb_info_API:
+  endpoint: '/lp/contentblocks/get?lpId=PROJECT_ID&templateId=TEMPLATE_ID'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+
+copy_template_API:
+  endpoint: '/lp/project/template/copy'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+
+segment_info_API:
+  endpoint: '/lp/project/listSegments?lpId=PROJECT_ID'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+
+assign_template_to_segment_API:
+  endpoint: '/segment/updateTemplateAssignment'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+
+remove_template_association_with_project_API:
+  endpoint: '/lp/project/deleteTemplate'
+  statusCode: 200
+  headerMap: 
+  requestBody: "" 
+  
+upload_proof_API:
+  endpoint: '/lp/template/softproof/proofhistory/upload?lpId=PROJECT_ID&templateId=TEMPLATE_ID&proofTypeId=1'
+  statusCode: 200
+  headerMap: 
+  requestBody: "" 
+  
+get_proofs_details_API:
+  endpoint: '/lp/getproofs?templateId=&lpId=PROJECT_ID'
+  statusCode: 200
+  headerMap: 
+  requestBody: ""   
+  
+retire_proof_API:
+  endpoint: '/lp/retireproofs'
+  statusCode: 200
+  headerMap: 
+  requestBody: ""     
+  
+download_proof_API:
+  endpoint: '/lp/download/prooftype'
+  statusCode: 200
+  headerMap: 
+  requestBody: ""   
+  
+upload_task_proofs_API:
+  endpoint: '/smarttasks/addAttachmentToTask?smartTaskId=TASK_ID&proofForReviewFromFileAttachment=true'
+  statusCode: 200
+  headerMap: 
+  requestBody: ""   
+  
+get_task_proof_id_API:
+  endpoint: '/smarttasks/ajax/getProofForReviewAttachments?smartTaskId=TASK_ID'
+  statusCode: 200
+  headerMap: 
+  requestBody: ""  
+  
+remove_proof_API:
+  endpoint: '/smarttasks/removeAttachmentFromTask'
+  statusCode: 200
+  headerMap: 
+  requestBody: ""  
+  
+delete_Task_API:
+  endpoint: '/smarttasks/deleteTask'
+  statusCode: 302
+  headerMap: 
+  requestBody: ""
+
+delete_template_API:
+  endpoint: '/content/template/delete'
+  statusCode: 302
+  headerMap:
+  requestBody: ""
+

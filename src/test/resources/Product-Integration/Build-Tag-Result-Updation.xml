@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Confluence_Build_Page">
+   <test name="Update_Build_Page_With_Result">
+      <classes>
+         <class name="com.merlin.confluence.Confluence_Page_Script" />
+      </classes>
+   </test>
+</suite>

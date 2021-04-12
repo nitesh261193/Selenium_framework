@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="REG_398-PROOF_COLLABORATION_PRODUCT_INTEGRATION">
+	<parameter name="reg_Run" value="false" />
+	<parameter name="project_Id" value="13208" />
+
+	<test name="LOGIN">
+		<groups>
+			<define name="all">
+				<include name="Login" />
+				<include name="Get_Build_Info" />
+			</define>
+			<dependencies>
+				<group name="Get_Build_Info" depends-on="Login" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+		</classes>
+	</test>
+	<test name="UPDATE_PROOF_COLLABORATION_VERSION">
+		<parameter name="app_Name" value="Proof Collaboration" />
+		<groups>
+			<define name="all">
+				<include name="Get_Build_Info" />
+				<include name="Set_App_Version" />
+			</define>
+			<dependencies>
+				<group name="Set_App_Version" depends-on="Get_Build_Info" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class name="com.merlin.dashboard.ui.Dashboard_Settings" />
+		</classes>
+	</test>
+	<test name="INITIALISATION">
+		<parameter name="api_Name" value="temp_info_API" />
+		<parameter name="template_Name" value="TEMP_IN_USE_PRODUCT_INTEGRATION" />
+		<parameter name="proof_Id" value="1" />
+		<groups>
+			<define name="all">
+				<include name="Get_Ids_For_Proof_Collaboration" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+	<test name="OPEN_PROJECT">
+		<groups>
+			<define name="all">
+				<include name="Open_Project_Page_By_Id" />
+
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+		</classes>
+	</test>
+	<test name="UPLOAD_PROOF_THROUGH_API">
+		<parameter name="api_Name" value="upload_proof_API" />
+		<parameter name="file_Path_To_Upload"
+			value="InputData\Proof_Collaboration\REG-398\Test_Automation_Proof.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Upload_Proof_Through_API" />
+
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+	<test name="FETCH_PROOF_ID_THROUGH_API">
+		<parameter name="api_Name" value="get_proofs_details_API" />
+		<parameter name="proof_Name" value="Test_Automation_Proof.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Get_Uploaded_Proof_ID" />
+
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+
+	<test name="SAVE_COMMENT_THROUGH_API">
+		<parameter name="api_Name" value="save_annotation_API" />
+		<parameter name="comment" value="Test_Automation_Comment_random" />
+		<groups>
+			<define name="all">
+				<include name="Save_Comment" />
+
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Proof_Collaboration_Api" />
+		</classes>
+	</test>
+
+	<test name="OPEN_PROOF">
+		<parameter name="proof_Name" value="Test_Automation_Proof.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Search_For_Proof_And_Select" />
+				<include name="Open_Selected_Proof" />
+				<include name="Verify_Proof_Opened" />
+			</define>
+			<dependencies>
+				<group name="Open_Selected_Proof" depends-on="Search_For_Proof_And_Select" />
+				<group name="Verify_Proof_Opened" depends-on="Open_Selected_Proof" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Center_Panel" />
+		</classes>
+	</test>
+
+	<test name="VALIDATE_COMMENT_ON_UI">
+		<parameter name="comment_Text" value="Test_Automation_Comment_random" />
+		<groups>
+			<define name="all">
+				<include name="Verify_Created_Comment_Exist" />
+			</define>
+
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Right_Panel" />
+		</classes>
+	</test>
+
+	<test name="DELETE_COMMENTS_IF_EXISTS">
+		<groups>
+			<define name="all">
+				<include name="Delete_Comments" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Right_Panel" />
+		</classes>
+	</test>
+
+	<test name="ADD_COMMENT">
+		<parameter name="comment_Type" value="Add Comment" />
+		<parameter name="comment_Text" value="á é í ó ú ñ ü ¡ ¿ Á É Í Ó Ú Ñ Ü © ® ™ †" />
+		<groups>
+			<define name="all">
+				<include name="Expand_Markuptool_Drop_Down" />
+				<include name="Select_Markuptool_And_Add_Comment" />
+				<include name="Verify_Created_Comment_Exist" />
+			</define>
+			<dependencies>
+				<group name="Select_Markuptool_And_Add" depends-on="Expand_Markuptool_Drop_Down" />
+				<group name="Verify_Created_Comment_Exist" depends-on="Select_Markuptool_And_Add_Comment" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Right_Panel" />
+		</classes>
+	</test>
+	<test name="DOWNLOAD_PROOF_AND_VERIFY_ADDED_COMMENT">
+		<parameter name="comment_Type" value="Add Comment" />
+		<parameter name="added_Comment_Text" value="á é í ó ú ñ ü ¡ ¿ Á É Í Ó Ú Ñ Ü © ® ™ †" />
+		<parameter name="downloaded_Proof_Name" value="AnnotatedTest_Automation_Proof.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Download_Proof_And_Verify_Comments" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Top_Panel" />
+		</classes>
+	</test>
+
+	<test name="EXIT_PROOF">
+		<groups>
+			<define name="all">
+				<include name="Click_On_Proof_Collaboration_Exist_Button" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Top_Panel" />
+		</classes>
+	</test>
+
+	<test name="UPLOAD_DOWNLOADED_PROOF_THROUGH_API_AND_VALIDATE_COMMENTS">
+		<parameter name="api_Name" value="upload_proof_API" />
+		<parameter name="file_Path_To_Upload"
+			value="OutputData\downloadFiles\AnnotatedTest_Automation_Proof.pdf" />
+		<parameter name="proof_Name" value="AnnotatedTest_Automation_Proof.pdf" />
+		<parameter name="comment_Text" value="á é í ó ú ñ ü ¡ ¿ Á É Í Ó Ú Ñ Ü © ® ™ †" />
+		<groups>
+			<define name="all">
+				<include name="Upload_Proof_Through_API" />
+				<include name="Search_For_Proof_And_Select" />
+				<include name="Open_Selected_Proof" />
+				<include name="Verify_Created_Comment_Exist" />
+			</define>
+			<dependencies>
+				<group name="Search_For_Proof_And_Select" depends-on="Upload_Proof_Through_API" />
+				<group name="Open_Selected_Proof" depends-on="Search_For_Proof_And_Select" />
+				<group name="Verify_Created_Comment_Exist" depends-on="Open_Selected_Proof" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Right_Panel" />
+		</classes>
+	</test>
+
+	<test name="RUN_COMAPARE_AND_VERIFY_COMPARISION">
+		<parameter name="compare_From" value="project" />
+		<parameter name="candidate_File_Path_To_Upload"
+			value="InputData\Proof_Collaboration\REG-398\Test_Automation_Compare_Proof.pdf" />
+		<parameter name="template_To_Select" value="TEMP_IN_USE_PRODUCT_INTEGRATION" />
+		<parameter name="proof_Type_To_Select" value="AUDIT-INDD" />
+		<parameter name="download_Result_Choice" value="Download Compare Zip" />
+		<parameter name="compared_Result_Downloaded" value="proofComparison_" />
+		<parameter name="base_Filepath"
+			value="InputData\Proof_Collaboration\REG-398\Base_Text_difference.pdf" />
+		<parameter name="unzipped_Folder" value="Unzipped_Compared_Result" />
+		<parameter name="target_Filepath"
+			value="OutputData\downloadFiles\Unzipped_Compared_Result\output\difference.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Run_New_Compare" />
+				<include name="Download_Compare_Result_And_Unzip" />
+				<include name="Compare_Pdf_File" />
+			</define>
+			<dependencies>
+				<group name="Download_Compare_Result_And_Unzip" depends-on="Run_New_Compare" />
+				<group name="Compare_Pdf_File" depends-on="Download_Compare_Result_And_Unzip" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Left_Panel" />
+		</classes>
+	</test>
+
+	<test name="EXIT_PROOF_AGAIN">
+		<parameter name="comment_To_Delete" value="all" />
+		<groups>
+			<define name="all">
+				<include name="Click_On_Proof_Collaboration_Exist_Button" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Top_Panel" />
+		</classes>
+	</test>
+	<test name="RETIRE_PROOF_THROUGH_API">
+		<parameter name="api_Name" value="retire_proof_API" />
+		<groups>
+			<define name="all">
+				<include name="Retire_Proof" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+	<test name="FETCH_PROOF_ID_THROUGH_API_AGAIN">
+		<parameter name="api_Name" value="get_proofs_details_API" />
+		<parameter name="proof_Name" value="AnnotatedTest_Automation_Proof.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Get_Uploaded_Proof_ID" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+	<test name="RETIRE_PROOF_THROUGH_API_AGAIN">
+		<parameter name="api_Name" value="retire_proof_API" />
+		<groups>
+			<define name="all">
+				<include name="Retire_Proof" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+
+	<test name="FETCH_PROOF_ID_THROUGH_API_FOR_COMPARE">
+		<parameter name="api_Name" value="get_proofs_details_API" />
+		<parameter name="proof_Name" value="Test_Automation_Compare_Proof.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Get_Uploaded_Proof_ID" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+	<test name="RETIRE_PROOF_THROUGH_API_AGAIN_FOR_COMPARE_PROOF">
+		<parameter name="api_Name" value="retire_proof_API" />
+		<groups>
+			<define name="all">
+				<include name="Retire_Proof" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test> 
+	<test name="COPY_GIVEN_TASK">
+	<parameter name="task_Name" value="TASK_IN_USE_PRODUCT_INTEGRATION" />
+		<groups>
+			<define name="all">
+				<include name="Open_Tasks_List_Page" />
+				<include name="Search_Task_And_Open" />
+				<include name="Copy_Task_And_Save_Id" />
+			</define>
+			<dependencies>
+				<group name="Search_Task_And_Open" depends-on="Open_Tasks_List_Page" />
+				<group name="Copy_Task_And_Save_Id" depends-on="Search_Task_And_Open" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+		</classes>
+	</test>
+
+	<test name="UPLOAD_TASK_PROOF_Through_API">
+		<parameter name="api_Name" value="upload_task_proofs_API" />
+		<parameter name="file_Path_To_Upload"
+			value="InputData\Proof_Collaboration\REG-398\Test_Automation_Task_Proof.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Upload_Task_Attachment_Through_API" />
+
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+	<!-- <test name="OPEN_TASK">
+		<groups>
+			<define name="all">
+				<include name="Open_Task_Page_By_Id" />
+
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+		</classes>
+	</test> -->
+	<test name="FETCH_TASK_PROOF_ID_THROUGH_API">
+		<parameter name="api_Name" value="get_task_proof_id_API" />
+		<parameter name="proof_Name" value="Test_Automation_Task_Proof.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Get_Uploaded_Task_Proof_ID" />
+
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+	<test name="SAVE_COMMENT_IN_TASK_PROOF_THROUGH_API">
+		<parameter name="api_Name" value="save_annotation_API" />
+		<parameter name="comment" value="Test_Automation_Comment_random" />
+		<groups>
+			<define name="all">
+				<include name="Save_Comment" />
+
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Proof_Collaboration_Api" />
+		</classes>
+	</test>
+
+	<test name="OPEN_PROOF_FROM_TASK">
+		<parameter name="proof_Name" value="Test_Automation_Task_Proof.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Open_Proof_From_Task" />
+				<include name="Verify_Proof_Opened" />
+			</define>
+			<dependencies>
+				<group name="Verify_Proof_Opened" depends-on="Open_Proof_From_Task" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Center_Panel" />
+		</classes>
+	</test>
+
+	<test name="VALIDATE_COMMENT_ON_UI_FOR_TASK_PROOF">
+		<parameter name="comment_Text" value="Test_Automation_Comment_random" />
+		<groups>
+			<define name="all">
+				<include name="Verify_Created_Comment_Exist" />
+			</define>
+
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Right_Panel" />
+		</classes>
+	</test>
+
+	<test name="DELETE_COMMENTS_IF_EXISTS_FOR_TASK_PROOF">
+		<groups>
+			<define name="all">
+				<include name="Delete_Comments" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Right_Panel" />
+		</classes>
+	</test>
+
+	<test name="ADD_COMMENT_FOR_TASK_PROOF">
+		<parameter name="comment_Type" value="Add Comment" />
+		<parameter name="comment_Text" value="á é í ó ú ñ ü ¡ ¿ Á É Í Ó Ú Ñ Ü © ® ™ †" />
+		<groups>
+			<define name="all">
+				<include name="Expand_Markuptool_Drop_Down" />
+				<include name="Select_Markuptool_And_Add_Comment" />
+				<include name="Verify_Created_Comment_Exist" />
+			</define>
+			<dependencies>
+				<group name="Select_Markuptool_And_Add" depends-on="Expand_Markuptool_Drop_Down" />
+				<group name="Verify_Created_Comment_Exist" depends-on="Select_Markuptool_And_Add_Comment" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Right_Panel" />
+		</classes>
+	</test>
+	<test name="DOWNLOAD_PROOF_AND_VERIFY_ADDED_COMMENT_FOR_TASK_PROOF">
+		<parameter name="comment_Type" value="Add Comment" />
+		<parameter name="added_Comment_Text" value="á é í ó ú ñ ü ¡ ¿ Á É Í Ó Ú Ñ Ü © ® ™ †" />
+		<parameter name="downloaded_Proof_Name" value="AnnotatedTest_Automation_Task_Proof.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Download_Proof_And_Verify_Comments" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Top_Panel" />
+		</classes>
+	</test>
+
+	<test name="EXIT_PROOF_FOR_TASK_PROOF">
+		<groups>
+			<define name="all">
+				<include name="Click_On_Proof_Collaboration_Exist_Button" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Top_Panel" />
+		</classes>
+	</test>
+
+
+	<test
+		name="UPLOAD_DOWNLOADED_PROOF_THROUGH_API_AND_VALIDATE_COMMENTS_FOR_TASK_PROOF">
+		<parameter name="api_Name" value="upload_task_proofs_API" />
+		<parameter name="file_Path_To_Upload"
+			value="OutputData\downloadFiles\AnnotatedTest_Automation_Task_Proof.pdf" />
+		<parameter name="proof_Name" value="AnnotatedTest_Automation_Task_Proof.pdf" />
+		<parameter name="comment_Text" value="á é í ó ú ñ ü ¡ ¿ Á É Í Ó Ú Ñ Ü © ® ™ †" />
+		<groups>
+			<define name="all">
+				<include name="Upload_Task_Attachment_Through_API" />
+				<include name="Open_Proof_From_Task" />
+				<include name="Verify_Created_Comment_Exist" />
+			</define>
+			<dependencies>
+				<group name="Open_Proof_From_Task" depends-on="Upload_Proof_Through_API" />
+				<group name="Verify_Created_Comment_Exist" depends-on="Open_Proof_From_Task" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Right_Panel" />
+		</classes>
+	</test>
+	<!-- <test name="RUN_COMAPARE_AND_VERIFY_COMPARISION_FOR_TASK_PROOF">
+		<parameter name="compare_From" value="task" />
+		<parameter name="candidate_File_Path_To_Upload"
+			value="InputData\Proof_Collaboration\REG-398\Test_Automation_Compare_Proof.pdf" />
+		<parameter name="template_To_Select" value="TEMP_IN_USE_PRODUCT_INTEGRATION" />
+		<parameter name="proof_Type_To_Select" value="AUDIT-INDD" />
+		<parameter name="download_Result_Choice" value="Download Compare Zip" />
+		<parameter name="compared_Result_Downloaded" value="proofComparison_" />
+		<parameter name="base_Filepath"
+			value="InputData\Proof_Collaboration\REG-398\Base_Text_difference.pdf" />
+		<parameter name="unzipped_Folder" value="Unzipped_Compared_Result" />
+		<parameter name="target_Filepath"
+			value="OutputData\downloadFiles\Unzipped_Compared_Result\output\difference.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Run_New_Compare" />
+				<include name="Download_Compare_Result_And_Unzip" />
+				<include name="Compare_Pdf_File" />
+			</define>
+			<dependencies>
+				<group name="Download_Compare_Result_And_Unzip" depends-on="Run_New_Compare" />
+				<group name="Compare_Pdf_File" depends-on="Download_Compare_Result_And_Unzip" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Left_Panel" />
+		</classes>
+	</test>
+ -->
+
+	<test name="EXIT_PROOF_AGAIN_FOR_TASK_PROOF">
+		<parameter name="comment_To_Delete" value="all" />
+		<groups>
+			<define name="all">
+				<include name="Click_On_Proof_Collaboration_Exist_Button" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class
+				name="com.merlin.dashboard.ui.proofcollaboration.Proof_Collaboration_Top_Panel" />
+		</classes>
+	</test>
+	<test name="DELETE_TASK">
+		<parameter name="api_Name" value="delete_Task_API" />
+		<groups>
+			<define name="all">
+				<include name="Delete_Task" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+	<!-- <test name="FETCH_ANNOTATED_TASK_PROOF_ID_THROUGH_API">
+		<parameter name="api_Name" value="get_task_proof_id_API" />
+		<parameter name="proof_Name" value="AnnotatedTest_Automation_Task_Proof.pdf" />
+		<groups>
+			<define name="all">
+				<include name="Get_Uploaded_Task_Proof_ID" />
+
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+	<test name="REMOVE_ANNOTATED_PROOF_THROUGH_API">
+		<parameter name="api_Name" value="remove_proof_API" />
+		<groups>
+			<define name="all">
+				<include name="Remove_Proof_From_Task" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+ -->
+</suite>

@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="REG_640-EMAIL_INTEGRATION_PRODUCT_INTEGRATION">
+   <parameter name="reg_Run" value="false" />
+   <parameter name="project_Id" value="22285" />
+   <parameter name="project_Name" value="PROJ_IN_USE_EXACT_TARGET" />
+   <parameter name="template_Name" value="Digital_Shell_1test2" />
+   <parameter name="email_Address" value="merlinappsautomation@gmail.com" />
+   <parameter name="email_Password" value="Naehas@2020" />
+   <parameter name="email_Folder" value="Email_Integration" />
+  <test name="LOGIN">
+      <groups>
+         <define name="all">
+            <include name="Login" />
+         </define>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+      </classes>
+   </test>
+  <!-- <test name="UPDATE_EXACT_TARGET_VERSION">
+      <parameter name="app_Name" value="Exact Target" />
+      <groups>
+         <define name="all">
+            <include name="Get_Build_Info" />
+            <include name="Set_App_Version" />
+         </define>
+         <dependencies>
+            <group name="Set_App_Version" depends-on="Get_Build_Info" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Settings" />
+      </classes>
+   </test>
+   <test name="INITIALISATION">
+      <parameter name="api_Name" value="temp_info_API" />
+      <groups>
+         <define name="all">
+            <include name="Get_Template_Ids_For_Exact_target" />
+            <include name="Get_Remote_Machine_Address" />
+         </define>
+         <dependencies>
+            <group name="Get_Remote_Machine_Address" depends-on="Get_Template_Ids_For_Exact_target" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.melin.apps.api.Dashboard_Api_Util" />
+      </classes>
+   </test>
+   <test name="PUBLISH_EMAIL_WITH_SEND_ONLY_TEXT">
+      <parameter name="publish_Type" value="Email_Integration" />
+      <parameter name="publish_Option" value="Send Only Text" />
+      <parameter name="tag_Name" value="Send_Only_Text" />
+      <parameter name="tag_Value" value="true" />
+      <parameter name="job_Type" value="Publish" />
+      <groups>
+         <define name="all">
+            <include name="Mark_All_Mail_Read" />
+            <include name="Get_Last_JobId_Present_On_Admin_Page" />
+            <include name="Open_Project_Publish_Page_By_Id" />
+            <include name="Publish_Email_Through_Ui" />
+            <include name="Get_JobId_Admin_Page" />
+            <include name="Monitor_Publish_Job_Status_On_Ui" />
+            <include name="Validate_Data_In_Xml" />
+         </define>
+         <dependencies>
+            <group name="Get_Last_JobId_Present_On_Admin_Page" depends-on="Mark_All_Mail_Read" />
+            <group name="Open_Project_Publish_Page_By_Id" depends-on="Get_Last_JobId_Present_On_Admin_Page" />
+            <group name="Publish_Email_Through_Ui" depends-on="Open_Project_Publish_Page_By_Id" />
+            <group name="Get_JobId_Admin_Page" depends-on="Publish_Email_Through_Ui" />
+            <group name="Monitor_Publish_Job_Status_On_Ui" depends-on="Get_JobId_Admin_Page" />
+            <group name="Validate_Data_In_Xml" depends-on="Monitor_Publish_Job_Status_On_Ui" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Admin_Page" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Email_Integration_Publish" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>
+   <test name="VALIDATE_EMAIL_FOR_PUBLISH_SEND_ONLY_TEXT">
+      <parameter name="email_Subject" value="Test A,Test B" />
+      <parameter name="email_Message" value="text version rule" />
+      <parameter name="wait_Time" value="5" />
+      <parameter name="email_Validate" value="true" />
+      <parameter name="email_Subject_Validate" value="Your TagTesting email has arrived!" />
+      <groups>
+         <define name="all">
+            <include name="Wait_For_Mail_To_Recieve" />
+            <include name="Check_Mail" />
+         </define>
+         <dependencies>
+            <group name="Check_Mail" depends-on="Wait_For_Mail_To_Recieve" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>&ndash;&gt;-->
+  <!-- <test name="VARIABLE_LINKS">
+      <parameter name="api_Name" value="variable_link_Api" />
+      <parameter name="tag_Name" value="VariableLink" />
+      <parameter name="tag_Value" value="name" />
+      <parameter name="unzipped_Folder" value="Unzipped_Data" />
+      <groups>
+         <define name="all">
+            <include name="Get_Variable_link_List_Through_API" />
+            <include name="Fetch_Varliable_Links_List_From_XML" />
+            <include name="Fetch_Column_List_From_ProdCsv" />
+            <include name="Validate_Variable_Links_In_Prodcsv_And_Manifest_File" />
+         </define>
+         <dependencies>
+            <group name="Fetch_Varliable_Links_List_From_XML" depends-on="Get_Variable_link_List_Through_API" />
+            <group name="Fetch_Column_List_From_ProdCsv" depends-on="Fetch_Varliable_Links_List_From_XML" />
+            <group name="Validate_Variable_Links_In_Prodcsv_And_Manifest_File" depends-on="Fetch_Column_List_From_ProdCsv" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.melin.apps.api.Email_Integration_Api" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Email_Integration_Publish" />
+      </classes>
+   </test>-->
+    <test name="UTILITY">
+      <groups>
+         <define name="all">
+            <include name="Fetch_TextFrame_List_From_XML" />
+         </define>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.emailintegration.Email_Integration_Publish" />
+      </classes>
+   </test>
+ <!--  <test name="VARIABLE_LINKS_FOR_NDE_PROD_CSV">
+      <parameter name="api_Name" value="variable_link_Api" />
+      <parameter name="tag_Name" value="VariableLink" />
+      <parameter name="tag_Value" value="name" />
+      <parameter name="unzipped_Folder" value="Unzipped_Compared_Result" />
+      <groups>
+         <define name="all">
+            <include name="Fetch_Column_List_From_NDEProdCsv" />
+            <include name="Validate_Variable_Links_In_Prodcsv_And_Manifest_File" />
+         </define>
+         <dependencies>
+            <group name="Validate_Variable_Links_In_Prodcsv_And_Manifest_File" depends-on="Fetch_Column_List_From_NDEProdCsv" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.melin.apps.api.Email_Integration_Api" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Email_Integration_Publish" />
+      </classes>
+   </test>
+   <test name="PUBLISH_EMAIL_WITH_HTML">
+      <parameter name="publish_Type" value="Email_Integration" />
+      <parameter name="publish_Option" value="Send_Html" />
+      <parameter name="job_Type" value="Publish" />
+      <groups>
+         <define name="all">
+            <include name="Mark_All_Mail_Read" />
+            <include name="Get_Last_JobId_Present_On_Admin_Page" />
+            <include name="Open_Project_Publish_Page_By_Id" />
+            <include name="Publish_Email_Through_Ui" />
+            <include name="Get_JobId_Admin_Page" />
+            <include name="Monitor_Publish_Job_Status_On_Ui" />
+         </define>
+         <dependencies>
+            <group name="Get_Last_JobId_Present_On_Admin_Page" depends-on="Mark_All_Mail_Read" />
+            <group name="Open_Project_Publish_Page_By_Id" depends-on="Get_Last_JobId_Present_On_Admin_Page" />
+            <group name="Publish_Email_Through_Ui" depends-on="Open_Project_Publish_Page_By_Id" />
+            <group name="Get_JobId_Admin_Page" depends-on="Publish_Email_Through_Ui" />
+            <group name="Monitor_Publish_Job_Status_On_Ui" depends-on="Get_JobId_Admin_Page" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Admin_Page" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Email_Integration_Publish" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>
+   <test name="VALIDATE_EMAIL_FOR_PUBLISH_SEND_HTML_VERSION_UI">
+      <parameter name="email_Subject" value="Test Acount1,Test Bcount1" />
+      <parameter name="email_Message" value="FILE-InputData/EmailIntegration/REG_640/Base_Email_Integration_Html.txt" />
+      <parameter name="wait_Time" value="5" />
+      <parameter name="email_Validate" value="true" />
+      <parameter name="email_Subject_Validate" value="Your TagTesting email has arrived!" />
+      <groups>
+         <define name="all">
+            <include name="Wait_For_Mail_To_Recieve" />
+            <include name="Check_Mail" />
+         </define>
+         <dependencies>
+            <group name="Check_Mail" depends-on="Wait_For_Mail_To_Recieve" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>
+   <test name="PUBLISH_EMAIL_FOR_TEST_SEND_OPTION_THROUGH_API">
+      <parameter name="api_Name" value="publish_Email_Api" />
+      <parameter name="option" value="ExactTargetTestAddress" />
+      <parameter name="tag_Name" value="Test_Send" />
+      <parameter name="tag_Value" value="merlinappsautomation@gmail.com" />
+      <groups>
+         <define name="all">
+            <include name="Mark_All_Mail_Read" />
+            <include name="Get_Last_Job_ID_From_Response_through_API" />
+            <include name="Publish_Email" />
+            <include name="Monitor_Publish_Job_Status_Through_API" />
+            <include name="Validate_Data_In_Xml" />
+         </define>
+         <dependencies>
+            <group name="Get_Last_Job_ID_From_Response_through_API" depends-on="Mark_All_Mail_Read" />
+            <group name="Publish_Email" depends-on="Get_Last_Job_ID_From_Response_through_API" />
+            <group name="Monitor_Publish_Job_Status_Through_API" depends-on="Publish_Email" />
+            <group name="Validate_Data_In_Xml" depends-on="Monitor_Publish_Job_Status_Through_API" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.melin.apps.api.Email_Integration_Api" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Email_Integration_Publish" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>
+   <test name="VALIDATE_EMAIL_FOR_TEST_SEND_OPTION_THROUGH_API">
+      <parameter name="email_Subject" value="Test A,Test B" />
+      <parameter name="email_Message" value="FILE-InputData/EmailIntegration/REG_640/Base_Email_Integration_Html.txt" />
+      <parameter name="wait_Time" value="5" />
+      <parameter name="email_Validate" value="true" />
+      <parameter name="email_Subject_Validate" value="Your TagTesting email has arrived!" />
+      <groups>
+         <define name="all">
+            <include name="Wait_For_Mail_To_Recieve" />
+            <include name="Check_Mail" />
+         </define>
+         <dependencies>
+            <group name="Check_Mail" depends-on="Wait_For_Mail_To_Recieve" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>
+   <test name="PUBLISH_EMAIL_FOR_SCHEDULE_SEND_OPTION_THROUGH_API">
+      <parameter name="api_Name" value="publish_Email_Api" />
+      <parameter name="option" value="scheduledTime" />
+      <parameter name="tag_Name" value="Schedule_Send" />
+      <groups>
+         <define name="all">
+            <include name="Mark_All_Mail_Read" />
+            <include name="Get_Last_Job_ID_From_Response_through_API" />
+            <include name="Publish_Email" />
+            <include name="Monitor_Publish_Job_Status_Through_API" />
+            <include name="Validate_Data_In_Xml" />
+         </define>
+         <dependencies>
+            <group name="Get_Last_Job_ID_From_Response_through_API" depends-on="Mark_All_Mail_Read" />
+            <group name="Publish_Email" depends-on="Get_Last_Job_ID_From_Response_through_API" />
+            <group name="Monitor_Publish_Job_Status_Through_API" depends-on="Publish_Email" />
+            <group name="Validate_Data_In_Xml" depends-on="Monitor_Publish_Job_Status_Through_API" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.melin.apps.api.Email_Integration_Api" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>
+   <test name="VALIDATE_EMAIL_FOR_SCHEDULE_SEND_OPTION_THROUGH_API">
+      <parameter name="email_Subject" value="Test A,Test B" />
+      <parameter name="email_Message" value="FILE-InputData/EmailIntegration/REG_640/Base_Email_Integration_Html.txt" />
+      <parameter name="wait_Time" value="5" />
+      <parameter name="email_Validate" value="true" />
+      <parameter name="email_Subject_Validate" value="Your TagTesting email has arrived!" />
+      <groups>
+         <define name="all">
+            <include name="Wait_For_Mail_To_Recieve" />
+            <include name="Check_Mail" />
+         </define>
+         <dependencies>
+            <group name="Check_Mail" depends-on="Wait_For_Mail_To_Recieve" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>
+   <test name="PUBLISH_EMAIL_FOR_DEDUPLICATE_OPTION_THROUGH_API">
+      <parameter name="api_Name" value="publish_Email_Api" />
+      <parameter name="option" value="deduplicateOption" />
+      <parameter name="tag_Name" value="Deduplicate" />
+      <parameter name="tag_Value" value="true" />
+      <groups>
+         <define name="all">
+            <include name="Mark_All_Mail_Read" />
+            <include name="Get_Last_Job_ID_From_Response_through_API" />
+            <include name="Publish_Email" />
+            <include name="Monitor_Publish_Job_Status_Through_API" />
+            <include name="Validate_Data_In_Xml" />
+         </define>
+         <dependencies>
+            <group name="Get_Last_Job_ID_From_Response_through_API" depends-on="Mark_All_Mail_Read" />
+            <group name="Publish_Email" depends-on="Get_Last_Job_ID_From_Response_through_API" />
+            <group name="Monitor_Publish_Job_Status_Through_API" depends-on="Publish_Email" />
+            <group name="Validate_Data_In_Xml" depends-on="Monitor_Publish_Job_Status_Through_API" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.melin.apps.api.Email_Integration_Api" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Email_Integration_Publish" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>
+   <test name="VALIDATE_EMAIL_FOR_DEDUPLICATE_OPTION_THROUGH_API">
+      <parameter name="email_Subject" value="Test A,Test Bcount0" />
+      <parameter name="email_Message" value="FILE-InputData/EmailIntegration/REG_640/Base_Email_Integration_Html.txt" />
+      <parameter name="wait_Time" value="5" />
+      <parameter name="email_Validate" value="true" />
+      <parameter name="email_Subject_Validate" value="Your TagTesting email has arrived!" />
+      <groups>
+         <define name="all">
+            <include name="Wait_For_Mail_To_Recieve" />
+            <include name="Check_Mail" />
+         </define>
+         <dependencies>
+            <group name="Check_Mail" depends-on="Wait_For_Mail_To_Recieve" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>
+   <test name="PUBLISH_EMAIL_FOR_THROTTLE_SEND_OPTION_THROUGH_API">
+      <parameter name="api_Name" value="publish_Email_Api" />
+      <parameter name="option" value="throttleOption" />
+      <parameter name="tag_Name" value="Throttle_Start_Time,Throttle_End_Time,Throttle_Limit" />
+      <groups>
+         <define name="all">
+            <include name="Mark_All_Mail_Read" />
+            <include name="Get_Last_Job_ID_From_Response_through_API" />
+            <include name="Publish_Email" />
+            <include name="Monitor_Publish_Job_Status_Through_API" />
+            <include name="Validate_Data_In_Xml_For_Throttle_Publish_Tags" />
+         </define>
+         <dependencies>
+            <group name="Get_Last_Job_ID_From_Response_through_API" depends-on="Mark_All_Mail_Read" />
+            <group name="Publish_Email" depends-on="Get_Last_Job_ID_From_Response_through_API" />
+            <group name="Monitor_Publish_Job_Status_Through_API" depends-on="Publish_Email" />
+            <group name="Validate_Data_In_Xml_For_Throttle_Publish_Tags" depends-on="Monitor_Publish_Job_Status_Through_API" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.melin.apps.api.Email_Integration_Api" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Email_Integration_Publish" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>
+   <test name="PUBLISH_EMAIL_WITH_SEND_ONLY_TEXT_INSTANTLY_THROUGH_API">
+      <parameter name="project_Id" value="22457" />
+      <parameter name="api_Name" value="publish_Email_Api" />
+      <parameter name="option" value="sendOnlyText" />
+      <parameter name="tag_Name" value="Send_Only_Text" />
+      <parameter name="tag_Value" value="true" />
+      <groups>
+         <define name="all">
+            <include name="Mark_All_Mail_Read" />
+            <include name="Get_Last_Job_ID_From_Response_through_API" />
+            <include name="Publish_Email" />
+            <include name="Monitor_Publish_Job_Status_Through_API" />
+            <include name="Validate_Data_In_Xml" />
+         </define>
+         <dependencies>
+            <group name="Get_Last_Job_ID_From_Response_through_API" depends-on="Mark_All_Mail_Read" />
+            <group name="Publish_Email" depends-on="Get_Last_Job_ID_From_Response_through_API" />
+            <group name="Monitor_Publish_Job_Status_Through_API" depends-on="Publish_Email" />
+            <group name="Validate_Data_In_Xml" depends-on="Monitor_Publish_Job_Status_Through_API" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.melin.apps.api.Email_Integration_Api" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Email_Integration_Publish" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>
+   <test name="VALIDATE_EMAIL_FOR_PUBLISH_SEND_ONLY_TEXT_INSTANTLY">
+      <parameter name="email_Subject" value="Test A" />
+      <parameter name="email_Message" value="text version rule" />
+      <parameter name="email_Validate" value="true" />
+      <parameter name="email_Subject_Validate" value="Your Instant email has arrived!" />
+      <parameter name="wait_Time" value="1" />
+      <groups>
+         <define name="all">
+            <include name="Wait_For_Mail_To_Recieve" />
+            <include name="Check_Mail" />
+         </define>
+         <dependencies>
+            <group name="Check_Mail" depends-on="Wait_For_Mail_To_Recieve" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test> 
+   <test name="PUBLISH_EMAIL_WITH_HTML_INSTANTLY">
+      <parameter name="project_Id" value="22457" />
+      <parameter name="api_Name" value="publish_Email_Api" />
+      <parameter name="option" value="Send_Html" />
+      <groups>
+         <define name="all">
+            <include name="Mark_All_Mail_Read" />
+            <include name="Get_Last_Job_ID_From_Response_through_API" />
+            <include name="Publish_Email" />
+            <include name="Monitor_Publish_Job_Status_Through_API" />
+         </define>
+         <dependencies>
+            <group name="Get_Last_Job_ID_From_Response_through_API" depends-on="Mark_All_Mail_Read" />
+            <group name="Publish_Email" depends-on="Get_Last_Job_ID_From_Response_through_API" />
+            <group name="Monitor_Publish_Job_Status_Through_API" depends-on="Publish_Email" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.melin.apps.api.Email_Integration_Api" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Email_Integration_Publish" />
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>
+   <test name="VALIDATE_EMAIL_FOR_PUBLISH_SEND_HTML_INSTANTLY">
+      <parameter name="email_Subject" value="Test A" />
+      <parameter name="email_Message" value="FILE-InputData/EmailIntegration/REG_640/Base_Email_Integration_Html.txt" />
+      <parameter name="email_Validate" value="true" />
+      <parameter name="email_Subject_Validate" value="Your Instant email has arrived!" />
+      <parameter name="wait_Time" value="1" />
+      <groups>
+         <define name="all">
+            <include name="Wait_For_Mail_To_Recieve" />
+            <include name="Check_Mail" />
+         </define>
+         <dependencies>
+            <group name="Check_Mail" depends-on="Wait_For_Mail_To_Recieve" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.emailintegration.Mail_Reader" />
+      </classes>
+   </test>-->
+</suite>

@@ -1,0 +1,5 @@
+save_annotation_API:
+  endpoint: '/lp/proofviewer/saveAnnotations?proofHistoryId=PROOF_ID&isAssetId=false&uploadResult=COMMENT_JSON&csrf'
+  statusCode: 200
+  headerMap: 
+  requestBody: ""  

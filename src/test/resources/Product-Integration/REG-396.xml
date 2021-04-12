@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="REG_396-HTML_EDITOR_PRODUCT_INTEGRATION">
+	<parameter name="reg_Run" value="false" />
+	<parameter name="project_Id" value="13208" />
+	<parameter name="template_Name" value="TEMP_IN_USE_HTML_EDITOR_FOR_PI" />
+	<test name="LOGIN">
+		<groups>
+			<define name="all">
+				<include name="Login" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+		</classes>
+	</test>
+	 <test name="UPDATE_HTML_EDITOR_VERSION">
+		<parameter name="app_Name" value="Html Editor" />
+		<groups>
+			<define name="all">
+				<include name="Get_Build_Info" />
+				<include name="Set_App_Version" />
+			</define>
+			<dependencies>
+				<group name="Set_App_Version" depends-on="Get_Build_Info" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class name="com.merlin.dashboard.ui.Dashboard_Settings" />
+		</classes>
+	</test>
+	<test name="INITIALISATION">
+		<parameter name="api_Name" value="temp_info_API" />
+		<groups>
+			<define name="all">
+				<include name="Get_Template_Ids_For_HtmlEditor" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+	 <test name="SAVE_API">
+		<parameter name="api_Name" value="lock_template_API" />
+		<parameter name="Api_Body_filepath" value="InputData/Html_Editor/REG-396/HTML.txt"/>
+		<groups>
+			<define name="all">
+				<include name="Lock_Template_Through_Api" />
+				<include name="Save_Html_Editor_Through_API" />
+			</define>
+			<dependencies>
+				<group name="Save_Html_Editor_Through_API" depends-on="Lock_Template_Through_Api" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+			<class name="com.melin.apps.api.Html_Editor_Api" />
+		</classes>
+	</test>
+	<test name="GET_HTML_AND_VALIDATE">
+		<parameter name="api_Name" value="Get_HTML_API" />
+		<parameter name="filename" value="Response.txt" />
+		<parameter name="base_Filepath" value="artifact_Folder/HTML.txt" />
+		<parameter name="target_Filepath" value="artifact_Folder/Response.txt" />
+		<groups>
+			<define name="all">
+				<include name="Get_Html_through_API" />
+				<include name="Compare_Text" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Html_Editor_Api" />
+			<class name="com.merlin.comparison.TextFile_Comparison" />
+		</classes>
+	</test>
+	<test name="OPEN_HTML_EDITOR">
+		<parameter name="api_Name" value="unlock_template_API" />
+		<groups>
+			<define name="all">
+				<include name="Unlock_Template_Through_Api" />
+				<include name="Open_Project_Template_Page_By_Id" />
+				<include name="Open_Project_Template_Html_Editor" />
+			</define>
+			<dependencies>
+				<group name="Open_Project_Template_Page_By_Id" depends-on="Unlock_Template_Through_Api" />
+				<group name="Open_Project_Template_Html_Editor" depends-on="Open_Project_Template_Page_By_Id" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+	 <test name="VALIDATE_SAVED_CONTENT_FROM_API_IN_FRAME">
+		<parameter name="image" value="agent_image_blank_white1" />
+		<parameter name="content" value="Api_Testing_random" />
+		<groups>
+			<define name="all">
+				<include name="Validate_ImageFrame" />
+				<include name="Validate_TextFrame" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Center_Panel" />
+		</classes>
+	</test>
+	<test name="CHANGE_IMAGE_IN_HTML_EDITOR">
+		<parameter name="image" value="InddImage1.png" />
+		<parameter name="folder" value="012_indd_image" />
+		<groups>
+			<define name="all">
+				<include name="Select_ImageFrame" />
+				<include name="Open_Right_Pannel_By_clicking_Sidebar_Icon" />				
+				<include name="Click_On_Edit_Button" />
+				<include name="Select_Image_Source" />
+				<include name="Validate_ImageFrame" />
+			</define>
+			<dependencies>
+				<group name="Open_Right_Pannel_By_clicking_Sidebar_Icon" depends-on="Select_ImageFrame" />
+				<group name="Click_On_Edit_Button" depends-on="Open_Right_Pannel_By_clicking_Sidebar_Icon" />
+				<group name="Select_Image_Source" depends-on="Click_On_Edit_Button" />
+				<group name="Validate_ImageFrame" depends-on="Select_Image_Source" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Center_Panel" />
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Right_Panel" />
+		</classes>
+	</test>
+	<test name="VALIDATING_ONLY_IMAGE_FILES_COMING_IN_SHARED_ASSET">
+	<parameter name="folder_Name" value="012_indd_image" />
+		<groups>
+			<define name="all">
+				<include name="Get_Id_For_Asset_Folder" />
+				<include name="Shared_Asset_Data_Through_API" />
+				<include name="Select_ImageFrame" />
+				<include name="Open_Right_Pannel_By_clicking_Sidebar_Icon" />
+				<include name="Click_On_Edit_Button" />
+				<include name="Validating_FileType_Coming_In_Shared_Asset" />
+				<include name="Click_On_Cancel_Button" />
+			</define>
+			<dependencies>
+				<group name="Shared_Asset_Data_Through_API" depends-on="Get_Id_For_Asset_Folder" />
+				<group name="Select_ImageFrame" depends-on="Shared_Asset_Data_Through_API" />
+				<group name="Open_Right_Pannel_By_clicking_Sidebar_Icon" depends-on="Select_ImageFrame" />
+				<group name="Click_On_Edit_Button" depends-on="Open_Right_Pannel_By_clicking_Sidebar_Icon" />				
+				<group name="Validating_FileType_Coming_In_Shared_Asset" depends-on="Click_On_Edit_Button" />
+				<group name="Click_On_Cancel_Button" depends-on="Validating_FileType_Coming_In_Shared_Asset" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Html_Editor_Api" />
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Center_Panel" />
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Right_Panel" />
+		</classes>
+	</test>
+	<test name="EDIT_TEXT_IN_HTML_TEMPLATE">
+		<parameter name="content" value="UI_Testing_random" />
+		<groups>
+			<define name="all">
+				<include name="Select_TextFrame" />
+				<include name="Open_Right_Pannel_By_clicking_Sidebar_Icon" />
+				<include name="Click_On_Edit_Button" />
+				<include name="Edit_Text_Of_Text_Frame" />
+				<include name="Validate_TextFrame" />
+			</define>
+			<dependencies>
+				<group name="Open_Right_Pannel_By_clicking_Sidebar_Icon" depends-on="Select_TextFrame" />
+				<group name="Click_On_Edit_Button" depends-on="Open_Right_Pannel_By_clicking_Sidebar_Icon" />
+				<group name="Edit_Text_Of_Text_Frame" depends-on="Click_On_Edit_Button" />
+				<group name="Validate_TextFrame" depends-on="Edit_Text_Of_Text_Frame" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Center_Panel" />
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Right_Panel" />
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Content_Editor" />
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Center_Panel" />
+		</classes>
+	</test>
+	<test name="ClOSE_TEMPLATE_BY_SAVING_THROUGH_POPUP">
+		<parameter name="close_After_Save" value="No" />
+		<parameter name="Choice" value="YES" />
+		<groups>
+			<define name="all">
+				<include name="Click_On_Close_Button" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Top_Panel" />
+		</classes>
+	</test>
+	<test name="GET_HTML_THROUGH_API_AFTER_SAVE_AND_VALIDATE">
+		<parameter name="api_Name" value="Get_HTML_API" />
+		<parameter name="filename" value="ResponseAfterSave.txt" />
+		<parameter name="text_To_Search" value="UI_Testing_random,InddImage1" />
+		<parameter name="file_Path" value="artifact_Folder/ResponseAfterSave.txt" />
+		<groups>
+			<define name="all">
+				<include name="Get_Html_through_API" />
+				<include name="Validate_Content_In_Html_Src" />
+			</define>
+			<dependencies>
+				<group name="Validate_Content_In_Html_Src" depends-on="Get_Html_through_API" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Html_Editor_Api" />
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Util" />
+		</classes>
+	</test>
+	<test name="OPEN_HTML_EDITOR_AGAIN">
+		<parameter name="api_Name" value="unlock_template_API" />
+		<groups>
+			<define name="all">
+				<include name="Unlock_Template_Through_Api" />
+				<include name="Open_Project_Template_Page_By_Id" />
+				<include name="Open_Project_Template_Html_Editor" />
+			</define>
+			<dependencies>
+				<group name="Open_Project_Template_Page_By_Id" depends-on="Unlock_Template_Through_Api" />
+				<group name="Open_Project_Template_Html_Editor" depends-on="Open_Project_Template_Page_By_Id" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test>
+	<test name="EDIT_TEXT_IN_HTML_TEMPLATE_AGAIN">
+		<parameter name="content" value="Text_To_Check_On_Saving_Template_random" />
+		<groups>
+			<define name="all">
+				<include name="Select_TextFrame" />
+				<include name="Open_Right_Pannel_By_clicking_Sidebar_Icon" />
+				<include name="Click_On_Edit_Button" />
+				<include name="Edit_Text_Of_Text_Frame" />
+				<include name="Validate_TextFrame" />
+			</define>
+			<dependencies>
+				<group name="Open_Right_Pannel_By_clicking_Sidebar_Icon" depends-on="Select_TextFrame" />
+				<group name="Click_On_Edit_Button" depends-on="Open_Right_Pannel_By_clicking_Sidebar_Icon" />
+				<group name="Edit_Text_Of_Text_Frame" depends-on="Click_On_Edit_Button" />
+				<group name="Validate_TextFrame" depends-on="Edit_Text_Of_Text_Frame" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Center_Panel" />
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Right_Panel" />
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Content_Editor" />
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Center_Panel" />
+		</classes>
+	</test>
+	<test name="SAVE_TEMPLATE_AND_CLOSE">
+		<parameter name="close_After_Save" value="Yes" />
+		<groups>
+			<define name="all">
+				<include name="Click_On_Save_Button" />
+				<include name="Click_On_Close_Button" />
+			</define>
+			<dependencies>
+				<group name="Click_On_Close_Button" depends-on="Click_On_Save_Button" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Top_Panel" />
+		</classes>
+	</test>
+	<test name="VALIDATE_DATA_AFTER_SAVE_AND_CLOSE_FUNCTIONALITY">
+		<parameter name="api_Name" value="Get_HTML_API" />
+		<parameter name="filename" value="ResponseAfterChanges.txt" />
+		<parameter name="text_To_Search" value="Text_To_Check_On_Saving_Template_random,InddImage1" />
+		<parameter name="file_Path" value="artifact_Folder/ResponseAfterChanges.txt" />
+		<groups>
+			<define name="all">
+				<include name="Get_Html_through_API" />
+				<include name="Validate_Content_In_Html_Src" />
+			</define>
+			<dependencies>
+				<group name="Validate_Content_In_Html_Src" depends-on="Get_Html_through_API" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Html_Editor_Api" />
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Util" />
+		</classes>
+	</test>
+	<test name="OPEN_HTML_EDITOR_THIRD_TIME">
+		<parameter name="api_Name" value="unlock_template_API" />
+		<groups>
+			<define name="all">
+				<include name="Unlock_Template_Through_Api" />
+				<include name="Open_Project_Template_Page_By_Id" />
+				<include name="Open_Project_Template_Html_Editor" />
+			</define>
+			<dependencies>
+				<group name="Open_Project_Template_Page_By_Id" depends-on="Unlock_Template_Through_Api" />
+				<group name="Open_Project_Template_Html_Editor" depends-on="Open_Project_Template_Page_By_Id" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+		</classes>
+	</test>
+	<test name="EDIT_TEXT_IN_HTML_TEMPLATE_THIRD_TIME">
+		<parameter name="content" value="Text_To_Check_On_Cancel_Template_random" />
+		<groups>
+			<define name="all">
+				<include name="Select_TextFrame" />
+				<include name="Open_Right_Pannel_By_clicking_Sidebar_Icon" />
+				<include name="Click_On_Edit_Button" />
+				<include name="Edit_Text_Of_Text_Frame" />
+			</define>
+			<dependencies>
+			    <group name="Open_Right_Pannel_By_clicking_Sidebar_Icon" depends-on="Select_TextFrame" />
+				<group name="Click_On_Edit_Button" depends-on="Open_Right_Pannel_By_clicking_Sidebar_Icon" />
+				<group name="Edit_Text_Of_Text_Frame" depends-on="Click_On_Edit_Button" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Center_Panel" />
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Right_Panel" />
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Content_Editor" />
+
+		</classes>
+	</test>
+	<test name="CLOSE_TEMPLATE_WITHOUT_SAVE">
+		<parameter name="close_After_Save" value="No" />
+		<parameter name="Choice" value="NO" />
+		<groups>
+			<define name="all">
+				<include name="Click_On_Close_Button" />
+			</define>
+
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.htmleditor.HtmlEditor_Top_Panel" />
+		</classes>
+	</test>
+	<test name="GET_HTML_AND_VALIDATION">
+		<parameter name="api_Name" value="Get_HTML_API" />
+		<parameter name="filename" value="ResponseWithoutChanges.txt" />
+		<parameter name="base_Filepath" value="artifact_Folder/ResponseAfterChanges.txt" />
+		<parameter name="target_Filepath" value="artifact_Folder/ResponseWithoutChanges.txt" />
+		<groups>
+			<define name="all">
+				<include name="Get_Html_through_API" />
+				<include name="Compare_Text" />
+			</define>
+			<dependencies>
+				<group name="compare_Text" depends-on="Get_Html_through_API" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Html_Editor_Api" />
+			<class name="com.merlin.comparison.TextFile_Comparison" />
+		</classes>
+	</test>
+</suite>

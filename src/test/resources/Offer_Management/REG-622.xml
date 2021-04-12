@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="REG_622-OFFER_TYPE_CREATION_TEST_CASES">
+   <parameter name="reg_Run" value="false" />
+   <test name="LOGIN">
+      <groups>
+         <define name="all">
+            <include name="Login" />
+            <include name="Get_Build_Info" />
+         </define>
+         <dependencies>
+            <group name="Get_Build_Info" depends-on="Login" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+      </classes>
+   </test>
+   <test name="CREATE_NEW_OFFER_TYPE_WITHOUT_SELECTING_CAMPAIGN_AND_PROJECT">
+      <parameter name="is_Displayed" value="true" />
+      <parameter name="offer_Type_Name" value="Offer_Type_label" />
+      <parameter name="enabled" value="true" />
+      <groups>
+         <define name="all">
+            <include name="Open_Offer_Type_Page_And_Validate" />
+            <include name="Create_Offer_Type" />
+         </define>
+         <dependencies>
+            <group name="Create_Offer_Type" depends-on="Open_Offer_Type_Page_And_Validate" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="CREATE_NEW_OFFER_TYPE">
+      <parameter name="is_Displayed" value="true" />
+      <parameter name="offer_Type_Name" value="   Offer_Type_label" />
+      <parameter name="campaign_Name" value="Offer_Campaign" />
+      <parameter name="project_Name" value="Offer_Project" />
+      <parameter name="enabled" value="true" />
+      <parameter name="table_Name" value="Offer_Type" />
+      <parameter name="columnslist" value="ID,Offer Type,Created Date,Created By,Copy,Enabled" />
+      <groups>
+         <define name="all">
+            <include name="Open_Offer_Type_Page_And_Validate" />
+            <include name="Validate_Offers_Tables_Headers" />
+            <include name="Create_Offer_Type" />
+         </define>
+         <dependencies>
+            <group name="Validate_Offers_Tables_Headers" depends-on="Open_Offer_Type_Page_And_Validate" />
+            <group name="Create_Offer_Type" depends-on="Validate_Offers_Tables_Headers" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="CREATE_NEW_STATUS_AND_ENABLE_OFFER_TYPE">
+      <parameter name="status" value="To Do" />
+      <parameter name="color" value="#e6e6e6" />
+      <parameter name="enabled_Offer_Type" value="true" />
+      <groups>
+         <define name="all">
+            <include name="Create_New_Status" />
+            <include name="Enable_Disable_Offer_Types" />
+         </define>
+         <dependencies>
+            <group name="Enable_Disable_Offer_Types" depends-on="Create_New_Status" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="CREATE_NEW_OFFER_GROUP_AND_DATA_FIELD">
+      <parameter name="group_Name" value="Single_Select_Drop_Down" />
+      <parameter name="group_Description" value="Testing Group Creation" />
+      <parameter name="group_color" value="#F9900D" />
+      <parameter name="group_Enable" value="true" />
+      <parameter name="db_Name" value="LookUp_Field" />
+      <parameter name="friendly_Name" value="Test LookUp Field" />
+      <parameter name="enabled" value="true" />
+      <parameter name="data_Type" value="Single Select Dropdown" />
+      <parameter name="source" value="Lookup Column" />
+      <parameter name="data_Feed_Name" value="DATAFEED_IN_USE_REG_487_FILTER_1" />
+      <parameter name="lookup_Column_Name" value="City" />
+      <groups>
+         <define name="all">
+            <include name="Create_New_Group" />
+            <include name="Add_Group_Data_Field" />
+         </define>
+         <dependencies>
+            <group name="Add_Group_Data_Field" depends-on="Create_New_Group" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="ADD_WRITE_IN_VALUES_DATA_TYPE_FOR_EXISTING_GROUP">
+      <parameter name="breadCrumbs_Name" value="Single_Select_Drop_Down" />
+      <parameter name="db_Name" value="Write_In_Values_Field" />
+      <parameter name="friendly_Name" value="Test Write In Values" />
+      <parameter name="enabled" value="true" />
+      <parameter name="data_Type" value="Single Select Dropdown" />
+      <parameter name="source" value="Write in Values" />
+      <parameter name="source_Values" value="Headers,Columns Test" />
+      <groups>
+         <define name="all">
+            <include name="Navigate_Using_BreadCrumbs" />
+            <include name="Add_Group_Data_Field" />
+         </define>
+         <dependencies>
+            <group name="Add_Group_Data_Field" depends-on="Navigate_Using_BreadCrumbs" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="ADD_NAME_VALUE_COLUMN_DATA_TYPE_FOR_EXISTING_GROUP">
+      <parameter name="breadCrumbs_Name" value="Single_Select_Drop_Down" />
+      <parameter name="db_Name" value="Name_Value_Column_Field" />
+      <parameter name="friendly_Name" value="Test Name/Value Column Field" />
+      <parameter name="enabled" value="true" />
+      <parameter name="data_Type" value="Single Select Dropdown" />
+      <parameter name="source" value="Name/Value Column" />
+      <parameter name="data_Feed_Name" value="DATAFEED_IN_USE_REG_487_FILTER_1" />
+      <parameter name="lookup_Column_Name" value="City" />
+      <parameter name="lookup_Link_Column_Name" value="State" />
+      <groups>
+         <define name="all">
+            <include name="Navigate_Using_BreadCrumbs" />
+            <include name="Add_Group_Data_Field" />
+         </define>
+         <dependencies>
+            <group name="Add_Group_Data_Field" depends-on="Navigate_Using_BreadCrumbs" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="ADD_DYNAMIC_LOOKUP_DATA_TYPE_FOR_EXISTING_GROUP">
+      <parameter name="breadCrumbs_Name" value="Single_Select_Drop_Down" />
+      <parameter name="db_Name" value="Dynamic_Lookup_Field" />
+      <parameter name="friendly_Name" value="Test Dynamic Lookup Field" />
+      <parameter name="enabled" value="true" />
+      <parameter name="data_Type" value="Single Select Dropdown" />
+      <parameter name="source" value="Dynamic Lookup Column" />
+      <parameter name="data_Feed_Name" value="DATAFEED_IN_USE_REG_487_FILTER_1" />
+      <parameter name="lookup_Column_Name" value="City" />
+      <groups>
+         <define name="all">
+            <include name="Navigate_Using_BreadCrumbs" />
+            <include name="Add_Group_Data_Field" />
+         </define>
+         <dependencies>
+            <group name="Add_Group_Data_Field" depends-on="Navigate_Using_BreadCrumbs" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="VALIDATE_OFFER_GROUPS_TABLE_ON_OFFER_TYPES_PAGE">
+      <parameter name="breadCrumbs_Name" value="Offer_Type_label" />
+      <parameter name="table_Name" value="Group" />
+      <parameter name="column_Name" value="Group Name" />
+      <parameter name="filter_Value" value="Single_Select_Drop_Down" />
+      <parameter name="validate_Count" value="4" />
+      <groups>
+         <define name="all">
+            <include name="Navigate_Using_BreadCrumbs" />
+            <include name="Validate_Data_Field_Count_On_Group_Table" />
+         </define>
+         <dependencies>
+            <group name="Validate_Data_Field_Count_On_Group_Table" depends-on="Navigate_Using_BreadCrumbs" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="EDIT_OFFER_GROUP">
+      <parameter name="is_Displayed" value="true" />
+      <parameter name="breadCrumbs_Name" value="Offer_Type_label" />
+      <parameter name="table_Name" value="Group" />
+      <parameter name="column_Name" value="Group Name" />
+      <parameter name="filter_Value" value="Group_random" />
+      <groups>
+         <define name="all">
+            <include name="Open_Offer_Group_Details_Page" />
+         </define>
+         <dependencies>
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="COPY_OFFER_GROUP_UNDER_SAME_OFFER_TYPE">
+      <parameter name="is_Displayed" value="true" />
+      <parameter name="new_Name" value="Copy_Group_random" />
+      <parameter name="copy_Type" value="Same Offer Type" />
+      <parameter name="table_Name" value="Group" />
+      <parameter name="column_Name" value="Group Name" />
+      <parameter name="filter_Value" value="Group_random" />
+      <parameter name="group_Name" value="Copy_Group_random" />
+      <groups>
+         <define name="all">
+            <include name="Open_Offer_Type_Page_And_Validate" />
+            <include name="Open_Offer_Type_Details_Page" />
+            <include name="Copy_Group" />
+            <include name="Validate_Copied_Offer_Group_Saved" />
+         </define>
+         <dependencies>
+            <group name="Open_Offer_Type_Details_Page" depends-on="Open_Offer_Type_Page_And_Validate" />
+            <group name="Copy_Group" depends-on="Open_Offer_Type_Details_Page" />
+            <group name="Validate_Copied_Offer_Group_Saved" depends-on="Copy_Group" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="COPY_OFFER_GROUP_TO_DIFFERENT_OFFER_TYPE">
+      <parameter name="new_Name" value="Copy_Group_random" />
+      <parameter name="copy_Type" value="Different Offer Type" />
+      <parameter name="copy_To" value="Validate_Copied_Offer_Type" />
+      <parameter name="offer_Type_Name" value="Validate_Copied_Offer_Type" />
+      <parameter name="table_Name" value="Group" />
+      <parameter name="column_Name" value="Group Name" />
+      <parameter name="filter_Value" value="Group_random" />
+      <parameter name="group_Name" value="Copy_Group_random" />
+      <groups>
+         <define name="all">
+            <include name="Copy_Group" />
+            <include name="Validate_Copied_Offer_Group_Saved" />
+         </define>
+         <dependencies>
+            <group name="Validate_Copied_Offer_Group_Saved" depends-on="Copy_Group" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="CREATE_NEW_OFFER_GROUP_AND_DATA_FIELD_FOR_DATE_SELECTION">
+      <parameter name="is_Displayed" value="true" />
+      <parameter name="group_Name" value="Date_Selector" />
+      <parameter name="group_Description" value="Testing Group Creation for Date Selector" />
+      <parameter name="group_color" value="#521989" />
+      <parameter name="group_Enable" value="true" />
+      <parameter name="db_Name" value="Date_Field" />
+      <parameter name="friendly_Name" value="Test Date Selector Field" />
+      <parameter name="enabled" value="true" />
+      <parameter name="data_Type" value="Date Selector" />
+      <groups>
+         <define name="all">
+            <include name="Open_Offer_Type_Page_And_Validate" />
+            <include name="Open_Offer_Type_Details_Page" />
+            <include name="Create_New_Group" />
+            <include name="Add_Group_Data_Field" />
+         </define>
+         <dependencies>
+            <group name="Open_Offer_Type_Details_Page" depends-on="Open_Offer_Type_Page_And_Validate" />
+            <group name="Create_New_Group" depends-on="Open_Offer_Type_Details_Page" />
+            <group name="Add_Group_Data_Field" depends-on="Create_New_Group" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="CREATE_NEW_OFFER_GROUP_AND_ADD_TEXT_SMALL_FIELD_DATA_FIELD">
+      <parameter name="breadCrumbs_Name" value="Offer_Type_label" />
+      <parameter name="group_Name" value="Text_Field_Small" />
+      <parameter name="group_Description" value="Testing Group Creation for Text Field Small" />
+      <parameter name="group_color" value="#88C64E" />
+      <parameter name="group_Enable" value="true" />
+      <parameter name="db_Name" value="Text_Small_Field" />
+      <parameter name="friendly_Name" value="Test Text Small Field" />
+      <parameter name="enabled" value="true" />
+      <parameter name="data_Type" value="Text Small (100 char)" />
+      <groups>
+         <define name="all">
+            <include name="Navigate_Using_BreadCrumbs" />
+            <include name="Create_New_Group" />
+            <include name="Add_Group_Data_Field" />
+         </define>
+         <dependencies>
+            <group name="Create_New_Group" depends-on="Navigate_Using_BreadCrumbs" />
+            <group name="Add_Group_Data_Field" depends-on="Create_New_Group" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="CREATE_NEW_OFFER_GROUP_AND_ADD_TEXT_LARGE_FIELD_DATA_FIELD">
+      <parameter name="breadCrumbs_Name" value="Offer_Type_label" />
+      <parameter name="group_Name" value="Text_Field_Large" />
+      <parameter name="group_Description" value="Testing Group Creation for Text Field Large" />
+      <parameter name="group_color" value="#C4025D" />
+      <parameter name="group_Enable" value="true" />
+      <parameter name="db_Name" value="Text_Large_Field" />
+      <parameter name="friendly_Name" value="Test Text Large Field" />
+      <parameter name="enabled" value="true" />
+      <parameter name="data_Type" value="Text Large (Unlimited)" />
+      <groups>
+         <define name="all">
+            <include name="Navigate_Using_BreadCrumbs" />
+            <include name="Create_New_Group" />
+            <include name="Add_Group_Data_Field" />
+         </define>
+         <dependencies>
+            <group name="Create_New_Group" depends-on="Navigate_Using_BreadCrumbs" />
+            <group name="Add_Group_Data_Field" depends-on="Create_New_Group" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="CREATE_NEW_OFFER_GROUP_AND_ADD_CONTENT_BLOCK_SELECTOR_DATA_FIELD">
+      <parameter name="breadCrumbs_Name" value="Offer_Type_label" />
+      <parameter name="group_Name" value="Content_Block_Selector_Field" />
+      <parameter name="group_Description" value="Testing Group Creation for Content Block" />
+      <parameter name="group_color" value="#333333" />
+      <parameter name="group_Enable" value="true" />
+      <parameter name="db_Name" value="Content_Block_Field" />
+      <parameter name="friendly_Name" value="Test Content Block Field" />
+      <parameter name="enabled" value="true" />
+      <parameter name="data_Type" value="Content Block Selector" />
+      <parameter name="content_Block_Value" value="CONTENT_BLOCK_SET_IN_USE_REG_405" />
+      <groups>
+         <define name="all">
+            <include name="Navigate_Using_BreadCrumbs" />
+            <include name="Create_New_Group" />
+            <include name="Add_Group_Data_Field" />
+         </define>
+         <dependencies>
+            <group name="Create_New_Group" depends-on="Navigate_Using_BreadCrumbs" />
+            <group name="Add_Group_Data_Field" depends-on="Create_New_Group" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+   <test name="CREATE_NEW_OFFER_GROUP_AND_ADD_RULE_SELECTOR_DATA_FIELD">
+      <parameter name="breadCrumbs_Name" value="Offer_Type_label" />
+      <parameter name="group_Name" value="Rule_Selector_Field" />
+      <parameter name="group_Description" value="Testing Group Creation for Rules" />
+      <parameter name="group_color" value="#2BB8BC" />
+      <parameter name="group_Enable" value="true" />
+      <parameter name="db_Name" value="Rule_Selector" />
+      <parameter name="friendly_Name" value="Test Rules Selection Field" />
+      <parameter name="enabled" value="true" />
+      <parameter name="data_Type" value="Rule Execution" />
+      <parameter name="rule_Set" value="Local Project Set" />
+      <parameter name="rule_Name" value="Rule_B" />
+      <groups>
+         <define name="all">
+            <include name="Navigate_Using_BreadCrumbs" />
+            <include name="Create_New_Group" />
+            <include name="Add_Group_Data_Field" />
+         </define>
+         <dependencies>
+            <group name="Create_New_Group" depends-on="Navigate_Using_BreadCrumbs" />
+            <group name="Add_Group_Data_Field" depends-on="Create_New_Group" />
+         </dependencies>
+         <run>
+            <include name="all" />
+         </run>
+      </groups>
+      <classes>
+         <class name="com.merlin.offer_management.Offer_Types" />
+      </classes>
+   </test>
+</suite>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="REG_399-CONTENT_EDITOR_PRODUCT_INTEGRATION">
+	<parameter name="reg_Run" value="false" />
+	<parameter name="project_Id" value="13208" />
+	<parameter name="template_Name" value="TEMP_IN_USE_CONTENT_EDITOR_FOR_PI" />
+	<parameter name="content_Name" value="Content-Integration" />
+ 	<test name="LOGIN">
+		<groups>
+			<define name="all">
+				<include name="Login" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+		</classes>
+	</test>
+	<test name="UPDATE_CONTENT_EDITOR_VERSION">
+		<parameter name="app_Name" value="Content Editor" />
+		<groups>
+			<define name="all">
+				<include name="Get_Build_Info" />
+				<include name="Set_App_Version" />
+			</define>
+			<dependencies>
+				<group name="Set_App_Version" depends-on="Get_Build_Info" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class name="com.merlin.dashboard.ui.Dashboard_Settings" />
+		</classes>
+	</test>
+	<test name="INITIALISATION">
+ 	<parameter name="config_Name" value="ContentEditor" />
+	<parameter name="api_Name" value="temp_info_API" />
+		<groups>
+			<define name="all">
+				<include name="Get_Ids_For_Content_Editor" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Content_Editor_Api" />
+		</classes>
+	</test>
+	<test name="UPDATE_DATA_BY_API_CALL">
+		<parameter name="config_Name" value="ContentEditor" />
+		<parameter name="api_Name" value="post_Content" />
+		<parameter name="data" value="testingcode_random" />
+		<groups>
+			<define name="all">
+				<include name="Save_Data_In_Content_Block_Using_Post_Api" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Content_Editor_Api" />
+		</classes>
+	</test>
+	<test name="VALIDATE_DATA_IN_CONTENT_PREVIEW">
+		<parameter name="config_Name" value="InddEditor" />
+		<parameter name="api_Name" value="unlock_template_API" />
+		<parameter name="content_Data" value="testingcode_random" />
+		<groups>
+			<define name="all">
+				<include name="UnlockTemplate_Through_Api" />
+				<include name="Open_Project_Template_Content_Page" />
+				<include name="Validate_Template_Content_Preview_Dialog" />
+				<include name="Click_Template_Content_Edit_Content_Button" />
+				<include name="Validating_Data_In_Content_Editor" />
+			</define>
+			<dependencies>
+				<group name="Open_Project_Template_Content_Page" depends-on="UnlockTemplate_Through_Api" />
+				<group name="Validate_Template_Content_Preview_Dialog"	depends-on="Open_Project_Template_Content_Page" />
+				<group name="Click_Template_Content_Edit_Content_Button" depends-on="Validate_Template_Content_Preview_Dialog" />
+				<group name="Validating_Data_In_Content_Editor" depends-on="Click_Template_Content_Edit_Content_Button" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Indd_Editor_Api" />
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class name="com.merlin.dashboard.ui.contenteditor.Content_Editor_Ui" />
+		</classes>
+	</test>
+    <test name="VALIDATING_COLORS_COMING_IN_CONTENT_EDITOR">
+		<parameter name="config_Name" value="ContentEditor" />
+		<parameter name="api_Name" value="color_API" />
+		<groups>
+			<define name="all">
+				<include name="Get_Color_List_Coming_Through_Api" />
+				<include name="Validating_Colors_In_Editor" />
+			</define>
+			<dependencies>
+				<group name="Validating_Colors_In_Editor" depends-on="Get_Color_List_Coming_Through_Api" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Content_Editor_Api" />
+			<class name="com.merlin.dashboard.ui.contenteditor.Content_Editor_Ui" />
+		</classes>
+	</test>
+	 <test name="VALIDATING_FONTS_COMING_IN_CONTENT_EDITOR">
+		<parameter name="config_Name" value="ContentEditor" />
+		<parameter name="api_Name" value="font_API" />
+		<groups>
+			<define name="all">
+				<include name="Get_Font_List_Coming_Through_Api" />
+				<include name="Validating_Fonts_In_Editor" />
+			</define>
+			<dependencies>
+				<group name="Validating_Fonts_In_Editor" depends-on="Get_Font_List_Coming_Through_Api" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Content_Editor_Api" />
+			<class name="com.merlin.dashboard.ui.contenteditor.Content_Editor_Ui" />
+		</classes>
+	</test>
+	<test name="VALIDATING_P_STYLES_COMING_IN_CONTENT_EDITOR">
+		<parameter name="config_Name" value="ContentEditor" />
+		<parameter name="api_Name" value="pstyle_API" />
+		<parameter name="style_Type" value="Paragraph Styles" />
+		<parameter name="button" value="Cancel" />
+		<groups>
+			<define name="all">
+				<include name="Get_Style_List_Coming_Through_Api" />
+				<include name="Open_Style_Dialog_In_Editor" />
+				<include name="Validating_Styles_In_Editor" />
+				<include name="Click_Apply_Cancel_Button_In_Dialog" />
+			</define>
+			<dependencies>
+				<group name="Open_Style_Dialog_In_Editor" depends-on="Get_Style_List_Coming_Through_Api" />
+				<group name="Validating_Styles_In_Editor" depends-on="Open_Style_Dialog_In_Editor" />
+				<group name="Click_Apply_Cancel_Button_In_Dialog" depends-on="Validating_Styles_In_Editor" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Content_Editor_Api" />
+			<class name="com.merlin.dashboard.ui.contenteditor.Content_Editor_Ui" />
+			<class
+				name="com.merlin.dashboard.ui.contenteditor.Content_Editor_Dialogs_Ui" />
+		</classes>
+	</test>
+	<test name="VALIDATING_T_STYLES_COMING_IN_CONTENT_EDITOR">
+		<parameter name="config_Name" value="ContentEditor" />
+		<parameter name="api_Name" value="tstyle_API" />
+		<parameter name="style_Type" value="Text/Character Styles" />
+		<parameter name="button" value="Cancel" />
+		<groups>
+			<define name="all">
+				<include name="Get_Style_List_Coming_Through_Api" />
+				<include name="Open_Style_Dialog_In_Editor" />
+				<include name="Validating_Styles_In_Editor" />
+				<include name="Click_Apply_Cancel_Button_In_Dialog" />
+			</define>
+			<dependencies>
+				<group name="Open_Style_Dialog_In_Editor" depends-on="Get_Style_List_Coming_Through_Api" />
+				<group name="Validating_Styles_In_Editor" depends-on="Open_Style_Dialog_In_Editor" />
+				<group name="Click_Apply_Cancel_Button_In_Dialog" depends-on="Validating_Styles_In_Editor" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Content_Editor_Api" />
+			<class name="com.merlin.dashboard.ui.contenteditor.Content_Editor_Ui" />
+			<class
+				name="com.merlin.dashboard.ui.contenteditor.Content_Editor_Dialogs_Ui" />
+		</classes>
+	</test>
+	<test name="UPDATE_DATA_IN_CONTENT_EDITOR">
+		<parameter name="content_Value" value="testingcode_random_1" />
+		<groups>
+			<define name="all">
+				<include name="Add_Data_In_Content_Editor" />
+				<include name="Save_Content_Editor" />
+			</define>
+			<dependencies>
+				<group name="Save_Content_Editor" depends-on="Add_Data_In_Content_Editor" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.contenteditor.Content_Editor_Ui" />
+		</classes>
+	</test>
+	<test name="VALIDATE_TEMPLATE_EDITOR_DATA_API">
+		<parameter name="config_Name" value="ContentEditor" />
+		<parameter name="api_Name" value="get_Content" />
+		<parameter name="content_Value" value="testingcode_random_1" />
+		<groups>
+			<define name="all">
+				<include name="Validate_Content_Block_Data_Through_Api" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Content_Editor_Api" />
+		</classes>
+	</test>
+	<test name="CLOSE_CONTENT_EDIOTR_WITHOUT_SAVE">
+			<parameter name="content_Name" value="Content-Integration" />
+			<parameter name="content_Value" value="testingcode_cancel_random_1" />
+		<groups>
+			<define name="all">
+				<include name="Click_Template_Content_Edit_Content_Button" />
+				<include name="Add_Data_In_Content_Editor" />
+				<include name="Click_Cancel_Button" />
+			</define>
+			<dependencies>
+				<group name="Add_Data_In_Content_Editor" depends-on="Click_Template_Content_Edit_Content_Button" />
+				<group name="Click_Cancel_Button" depends-on="Add_Data_In_Content_Editor" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class name="com.merlin.dashboard.ui.contenteditor.Content_Editor_Ui" />
+		</classes>
+	</test>
+	<test name="VALIDATE_DATA_DOES_NOT_SAVED">
+		<parameter name="config_Name" value="ContentEditor" />
+		<parameter name="api_Name" value="get_Content" />
+		<parameter name="content_Value" value="testingcode_random_1" />
+		<groups>
+			<define name="all">
+				<include name="Validate_Content_Block_Data_Through_Api" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Content_Editor_Api" />
+		</classes>
+	</test> 
+</suite>

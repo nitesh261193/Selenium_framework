@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="REG_620-OFFER_MANAGEMENT_ADMIN_SECTION_TEST_CASES">
+    <parameter name="reg_Run" value="false" />
+    <test name="LOGIN">
+        <groups>
+            <define name="all">
+                <include name="Login" />
+                <include name="Get_Build_Info" />
+            </define>
+            <dependencies>
+                <group name="Get_Build_Info" depends-on="Login" />
+            </dependencies>
+            <run>
+                <include name="all" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+        </classes>
+    </test>
+    <test name="OPEN_USER_PAGE_AND_REVOKE_USER_ROLES">
+        <parameter name="user_Name" value="qaadmin" />
+        <parameter name="user_Roles" value="Offers-Create and Edit Offers,Edit Offer Types,Manage Offers" />
+        <parameter name="select" value="false" />
+        <groups>
+            <define name="all">
+                <include name="Open_Users_Page" />
+                <include name="Filter_User_And_Open_User_Details_Page" />
+                <include name="Add_Remove_Roles" />
+            </define>
+            <dependencies>
+                <group name="Filter_User_And_Open_User_Details_Page" depends-on="Open_Users_Page" />
+                <group name="Add_Remove_Roles" depends-on="Filter_User_And_Open_User_Details_Page" />
+            </dependencies>
+            <run>
+                <include name="all" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.merlin.dashboard.ui.Users_Settings" />
+        </classes>
+    </test>
+    <test name="VALIDATE_OFFER_TYPE_PAGE_IS_NOT_ACCESSIBLE">
+    <parameter name="is_Displayed" value="false" />
+        <groups>
+            <define name="all">
+                <include name="Open_Offer_Type_Page_And_Validate" />
+            </define>
+            <run>
+                <include name="all" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.merlin.offer_management.Offer_Types" />
+        </classes>
+    </test>
+    <test name="VALIDATE_OFFERS_LINK_IS_NOT_VISIBLE">
+        <parameter name="menu_Option" value="Offers" />
+        <parameter name="is_Displayed" value="false" />
+        <groups>
+            <define name="all">
+                <include name="Vaildated_Hamburger_Menu" />
+            </define>
+            <run>
+                <include name="all" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.merlin.offer_management.Offers" />
+        </classes>
+    </test>
+    <test name="OPEN_USER_PAGE_AND_ADD_USER_ROLES">
+        <parameter name="user_Name" value="qaadmin" />
+        <parameter name="user_Roles" value="Offers-Create and Edit Offers,Edit Offer Types,Manage Offers" />
+        <parameter name="select" value="true" />
+        <groups>
+            <define name="all">
+                <include name="Open_Users_Page" />
+                <include name="Filter_User_And_Open_User_Details_Page" />
+                <include name="Add_Remove_Roles" />
+            </define>
+            <dependencies>
+                <group name="Filter_User_And_Open_User_Details_Page" depends-on="Open_Users_Page" />
+                <group name="Add_Remove_Roles" depends-on="Filter_User_And_Open_User_Details_Page" />
+            </dependencies>
+            <run>
+                <include name="all" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.merlin.dashboard.ui.Users_Settings" />
+        </classes>
+    </test>
+    <test name="VALIDATE_OFFER_TYPE_PAGE_IS_VISIBLE">
+    <parameter name="is_Displayed" value="true" />
+        <groups>
+            <define name="all">
+                <include name="Open_Offer_Type_Page_And_Validate" />
+            </define>
+            <run>
+                <include name="all" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.merlin.offer_management.Offer_Types" />
+        </classes>
+    </test>
+    <test name="VALIDATE_OFFERS_PAGE_IS_VISIBLE">
+        <parameter name="menu_Option" value="Offers" />
+        <parameter name="is_Displayed" value="true" />
+        <groups>
+            <define name="all">
+                <include name="Vaildated_Hamburger_Menu" />
+                <include name="Open_Offers_Page" />
+            </define>
+            <dependencies>
+                <group name="Open_Offers_Page" depends-on="Vaildated_Hamburger_Menu" />
+            </dependencies>
+            <run>
+                <include name="all" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.merlin.offer_management.Offers" />
+        </classes>
+    </test>
+</suite>

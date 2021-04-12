@@ -1,0 +1,18 @@
+publish_Email_Api:
+  endpoint: '/lp/prepublish?lpId=PROJECT_ID'
+  statusCode: 302
+  headerMap:
+  requestBody: ""
+
+listSuppliers_Api:
+    endpoint: '/lp/project/listSuppliers?lpId=PROJECT_ID'
+    statusCode: 200
+    headerMap:
+    requestBody: ""
+
+variable_link_Api:
+  endpoint: '/lp/variablelink/list?templateId=TEMPLATE_ID'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+

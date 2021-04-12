@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="REG_523-INDD_EDITOR_REGRESSION">
+	<parameter name="reg_Run" value="false" />
+	<parameter name="project_Id" value="13208" />
+	<parameter name="segment_Name" value="SEGMENT_IN_USE" />
+	<test name="LOGIN">
+		<groups>
+			<define name="all">
+				<include name="Login" />
+			</define>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+		</classes>
+	</test>
+	<!-- <test name="INITIALISATION">
+		<parameter name="template_Name" value="TEMP_IN_USE_INDD_EDITOR_FOR_INTEGRATION" />
+		<parameter name="config_Name" value="DashboardApiUtil" />
+		<parameter name="api_Name" value="copy_template_API" />
+		<parameter name="assign" value="true" />
+		<parameter name="copy_Template_Name" value="TEMP_REG_550_random" />
+		<groups>
+			<define name="all">
+				<include name="Copy_Template" />
+				<include name="Assign_Template_To_Segment" />
+			</define>
+			<dependencies>
+				<group name="Assign_Template_To_Segment" depends-on="Copy_Template" />
+				<group name="Get_Build_Info" depends-on="Assign_Template_To_Segment" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+		</classes>
+	</test> -->
+	<test name="OPEN_INDD_EDITOR">
+		<parameter name="api_Name" value="unlock_template_API" />
+		<groups>
+			<define name="all">
+				<include name="Unlock_Template_Through_Api" />
+				<include name="Open_Project_Template_Page_By_Id" />
+				<include name="Open_Project_Template_Indd_Editor" />
+				<include name="Fetch_Asset_Id_For_Indd_Editor" />
+			</define>
+			<dependencies>
+				<group name="Open_Project_Template_Page_By_Id" depends-on="Unlock_Template_Through_Api" />
+				<group name="Open_Project_Template_Indd_Editor" depends-on="Open_Project_Template_Page_By_Id" />
+				<group name="Fetch_Asset_Id_For_Indd_Editor" depends-on="Open_Project_Template_Indd_Editor" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.melin.apps.api.Dashboard_Api_Util" />
+			<class name="com.merlin.dashboard.ui.Dashboard_Tests" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Util" />
+		</classes>
+	</test>
+	<test name="TEST_4573_CREATE_PSTYLE_INDENTS_AND_SPACING">
+		<parameter name="P_Style_Name" value="[Basic Paragraph]" />
+		<parameter name="option_Name" value="Indents and Spacing"/>
+		<parameter name="properties" value="Alignment_Indents-left,Left Indent_Indents-5,Right Indent-5,First Line Indent_Indents-15,Last Line Indent-10,Space Before-3,Space After-5"/>
+		<parameter name="operation_Type" value="Create"/>
+		<parameter name="new_Style_Name" value="Test_Automation_random"/>
+		<groups>
+			<define name="all">
+				<include name="Select_TextFrame" />
+				<include name="Click_On_Edit_Button"/>
+				<include name="Open_P_Styles_List_Dialog"/>
+				<include name="Open_P_Style_From_List_Dialog"/>
+				<include name="Select_P_Style_Edit_Option_From_List"/>
+				<include name="Edit_Style_Properties_Options"/>
+				<include name="Click_On_Apply_For_Style_Properties_Options"/>
+				<include name="Perform_Style_Operation"/>
+				<include name="Save_Indd_Content_Editor"/>
+			</define>
+			<dependencies>
+				<group name="Click_On_Edit_Button" depends-on="Select_TextFrame"/>
+				<group name="Open_P_Styles_List_Dialog" depends-on="Click_On_Edit_Button" />
+				<group name="Open_P_Style_From_List_Dialog" depends-on="Open_P_Styles_List_Dialog" />
+				<group name="Select_P_Style_Edit_Option_From_List" depends-on="Open_P_Style_From_List_Dialog" />
+				<group name="Edit_Style_Properties_Options" depends-on="Select_P_Style_Edit_Option_From_List" />
+				<group name="Click_On_Apply_For_Style_Properties_Options" depends-on="Edit_Style_Properties_Options" />
+				<group name="Perform_Style_Operation" depends-on="Click_On_Apply_For_Style_Properties_Options" />
+				<group name="Save_Indd_Content_Editor" depends-on="Perform_Style_Operation" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Center_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Right_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Content_Editor" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Content_Editor_PC_Style" />
+		</classes>
+	</test>
+	<test name="TEST_4573_VALIDATE_CREATED_STYLE_INDENTS_AND_SPACING">
+		<parameter name="option_Name" value="Indents and Spacing"/>
+		<parameter name="properties" value="Alignment_Indents-left,Left Indent_Indents-5,Right Indent-5,First Line Indent_Indents-15,Last Line Indent-10,Space Before-3,Space After-5"/>
+		<parameter name="property_Value" value="left,5,5,15,10,3,5"/>
+		<parameter name="validation_Type" value="API"/>
+		<parameter name="style_Type" value="P_Styles"/>
+		<parameter name="P_Style_Name" value="[Basic Paragraph]" />
+		<parameter name="config_Name" value="InddEditor" />
+		<parameter name="api_Name" value="template_info_API" />
+		<parameter name="operation_Type" value="Create"/>
+		<parameter name="new_Style_Name" value="Test_Automation_random"/>
+		<groups>
+			<define name="all">
+				<include name="Select_TextFrame" />
+				<include name="Click_On_Edit_Button"/>
+				<include name="Open_P_Styles_List_Dialog"/>
+				<include name="Open_P_Style_From_List_Dialog"/>
+				<include name="Select_P_Style_Edit_Option_From_List"/>
+				<include name="Validate_Style_Properties"/>
+			</define>
+			<dependencies>
+				<group name="Click_On_Edit_Button" depends-on="Select_TextFrame"/>
+				<group name="Open_P_Styles_List_Dialog" depends-on="Click_On_Edit_Button" />
+				<group name="Open_P_Style_From_List_Dialog" depends-on="Open_P_Styles_List_Dialog" />
+				<group name="Select_P_Style_Edit_Option_From_List" depends-on="Open_P_Style_From_List_Dialog" />
+				<group name="Validate_Style_Properties" depends-on="Select_P_Style_Edit_Option_From_List" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Center_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Right_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Content_Editor" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Content_Editor_PC_Style" />
+		</classes>
+	</test>
+	<test name="TEST_4558_CREATE_CSTYLE_ADVANCED_CHARACTER_FORMATS_AND_VALIDATE_THROUGH_API">
+		<parameter name="validation_Type" value="API"/>
+		<parameter name="style_Type" value="C_Styles"/>
+		<parameter name="P_Style_Name" value="[None]" />
+		<parameter name="config_Name" value="InddEditor" />
+		<parameter name="api_Name" value="template_info_API" />
+		<parameter name="option_Name" value="Advance_Character_Formats"/>
+		<parameter name="properties" value="Horizontal Scale-5,Vertical Scale-5,Baseline Shift-2"/>
+		<parameter name="operation_Type" value="Create"/>
+		<parameter name="new_Style_Name" value="Test_Automation_random"/>
+		<groups>
+			<define name="all">
+				<include name="Select_TextFrame" />
+				<include name="Click_On_Edit_Button"/>
+				<include name="Open_P_Styles_List_Dialog"/>
+				<include name="Open_P_Style_From_List_Dialog"/>
+				<include name="Select_C_Style_Edit_Option_From_List"/>
+				<include name="Edit_Style_Properties_Options"/>
+				<include name="Click_On_Apply_For_Style_Properties_Options"/>
+				<include name="Perform_Style_Operation"/>
+				<include name="Save_Indd_Content_Editor"/>
+				<include name="Get_Style_Info_Through_Api"/>
+				<include name="Validate_Style_Properties" />
+			</define>
+			<dependencies>
+				<group name="Click_On_Edit_Button" depends-on="Select_TextFrame"/>
+				<group name="Open_C_Styles_List_Dialog" depends-on="Click_On_Edit_Button" />
+				<group name="Open_C_Style_From_List_Dialog" depends-on="Open_C_Styles_List_Dialog" />
+				<group name="Select_C_Style_Edit_Option_From_List" depends-on="Open_C_Style_From_List_Dialog" />
+				<group name="Edit_Style_Properties_Options" depends-on="Select_C_Style_Edit_Option_From_List" />
+				<group name="Click_On_Apply_For_Style_Properties_Options" depends-on="Edit_Style_Properties_Options" />
+				<group name="Perform_Style_Operation" depends-on="Click_On_Apply_For_Style_Properties_Options" />
+				<group name="Save_Indd_Content_Editor" depends-on="Perform_Style_Operation"/>
+				<group name="Get_Style_Info_Through_Api" depends-on="Save_Indd_Content_Editor" />
+				<group name="Validate_Style_Properties" depends-on="Get_Style_Info_Through_Api" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Center_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Right_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Content_Editor" />
+			<class name="com.melin.apps.api.Indd_Editor_Api" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Content_Editor_PC_Style" />
+		</classes>
+	</test>
+	<!--<test name="TEST_4578_CREATE_PSTYLE_BULLET_AND_NUMBERING">
+		<parameter name="P_Style_Name" value="[Basic Paragraph]" />
+		<parameter name="option_Name" value="Bullet and Numbering"/>
+		<parameter name="properties" value="List Type-bullet,Alignment-left,Left Indent_Indents-5,First Line Indent_Indents-15,Tab Position-5"/>
+		<parameter name="operation_Type" value="Create"/>
+		<parameter name="new_Style_Name" value="Test_Automation_random"/>
+		<groups>
+			<define name="all">
+				<include name="Select_TextFrame" />
+				<include name="Click_On_Edit_Button"/>
+				<include name="Open_P_Styles_List_Dialog"/>
+				<include name="Open_P_Style_From_List_Dialog"/>
+				<include name="Select_P_Style_Edit_Option_From_List"/>
+				<include name="Edit_Style_Properties_Options"/>
+				<include name="Click_On_Apply_For_Style_Properties_Options"/>
+				<include name="Perform_Style_Operation"/>
+				<include name="Save_Indd_Content_Editor"/>
+			</define>
+			<dependencies>
+				<group name="Click_On_Edit_Button" depends-on="Select_TextFrame"/>
+				<group name="Open_P_Styles_List_Dialog" depends-on="Click_On_Edit_Button" />
+				<group name="Open_P_Style_From_List_Dialog" depends-on="Open_P_Styles_List_Dialog" />
+				<group name="Select_P_Style_Edit_Option_From_List" depends-on="Open_P_Style_From_List_Dialog" />
+				<group name="Edit_Style_Properties_Options" depends-on="Select_P_Style_Edit_Option_From_List" />
+				<group name="Click_On_Apply_For_Style_Properties_Options" depends-on="Edit_Style_Properties_Options" />
+				<group name="Perform_Style_Operation" depends-on="Click_On_Apply_For_Style_Properties_Options" />
+				<group name="Save_Indd_Content_Editor" depends-on="Perform_Style_Operation" />
+			</dependencies>
+			<run>
+				<include name="all" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Center_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Right_Panel" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Content_Editor" />
+			<class name="com.merlin.dashboard.ui.inddeditor.Indd_Content_Editor_PC_Style" />
+		</classes>
+	</test>-->
+
+</suite>

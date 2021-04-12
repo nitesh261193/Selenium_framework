@@ -1,0 +1,210 @@
+text version rule
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
+
+<head>
+    <title>HTML Comparison Integra Test</title>
+    <meta charset="utf-8">
+</head>
+
+<body style="font-family:Arial, Helvetica, sans-serif; font-size:13px; margin:0px; padding:0px;  width: 100%; min-width: 100%;" alink="#0066cc" link="#0066cc" text="#524940" marginwidth="0" marginheight="0">
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border-collapse: collapse;">
+        <tr>
+            <td>
+                <table cellpadding="0" cellspacing="0" border="0" width="570">
+                    <tr>
+                        <td width="10">
+                        </td>
+                        <td>
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="min-width: 550px;">
+                                <tr>
+                                    <td height="20" style="font-size: 20px; line-height: 20px;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="min-width: 550px;">
+                                            <tr>
+                                                <td>
+													<!-- For ##Alaska_Airlines_VisaSig## --> <!-- Start Header content section -->
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: collapse; border: 0px;"><colgroup><col/><col/><col/></colgroup>
+<tbody>
+<tr>
+<td height="10" style="font-size: 0; line-height: 10px; mso-line-height-rule: exactly;"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+<tr>
+<td><!-- Start - HEADER --> <!-- [if (gte mso 9)]>
+            <table bgcolor="#01426a" border="0" cellspacing="0" cellpadding="0" style="width:550px; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
+            <tr>
+            <td>
+            <![endif]-->
+<table bgcolor="#01426a" align="center" cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width: 550px; border-collapse: collapse; background-color: #01426a; border: 0px;"><colgroup><col/><col/><col/></colgroup>
+<tbody>
+<tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width: 550px; border-collapse: collapse; background-color: #01426a; border: 0px;"><colgroup><col/><col/><col/></colgroup>
+<tbody>
+<tr>
+<td valign="top" align="left" style="font-size: 0;"><img alt="" src="https://naehaspublictest.s3.amazonaws.com/integraperflongshotdashboard/65a5d65fc262e358f57b2160f6a90af1/header-logo-mp_370x220.jpg" width="185" height="110" border="0" title="" style="display: block; border: 0; outline: 0; width: 100%; height: auto; max-width: 185px;"></td>
+<td width="40"></td>
+<td valign="top" align="right" style="font-size: 0;"><img alt="" src="https://naehaspublictest.s3.amazonaws.com/integraperflongshotdashboard/bf5382d3b5da72d29e8e4bdd9cc4f041/header-logo-boa.jpg" width="213" height="110" border="0" title="" style="border: 0; outline: 0; width: 100%; height: auto; max-width: 213px;"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- [if (gte mso 9)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]--> <!-- End - HEADER --></td>
+</tr>
+<tr>
+<td width="100%" align="right" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #6a6a6a; line-height: 15px;"><br>Exclusively for Test B Sample2<span data-isspchar="true">&nbsp;</span><br>Your credit card ending in 9999<span data-isspchar="true">&nbsp;</span><br></td>
+</tr>
+<tr>
+<td height="10" style="font-size: 0; line-height: 10px; mso-line-height-rule: exactly;"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+</tbody>
+</table>
+<!-- End Header content section -->
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="14" style="font-size: 14px; line-height: 14px;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+											<!-- For ##Alaska_Airlines_VisaSig## --> <!--START - row1_section code -->
+<table style="border-collapse: collapse;" width="100%" cellspacing="0" cellpadding="0" border="0"><colgroup><col/><col/><col/><col/></colgroup>
+<tbody>
+<tr>
+<td colspan="4" style="font-size: 0; line-height: 1px; mso-line-height-rule: exactly; background-color: #cecece;" height="1" bgcolor="#cecece"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+<tr>
+<td style="background-color: #cecece;" width="1"></td>
+<td width="20"></td>
+<td>
+<table style="border-collapse: collapse;" width="100%" cellspacing="0" cellpadding="0" border="0"><colgroup><col/><col/><col/><col/></colgroup>
+<tbody>
+<tr>
+<td valign="top">
+<table style="border-collapse: collapse;" width="100%" cellspacing="0" cellpadding="0" border="0"><colgroup><col/><col/><col/><col/></colgroup>
+<tbody>
+<tr>
+<td style="font-size: 0; line-height: 10px; mso-line-height-rule: exactly;" height="10"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+<tr>
+<td class="copy_mainheading" style="font-size: 23px; line-height: 34px; font-family: Arial, Helvetica, sans-serif; color: #48850b;"><strong>The following text is to compare different content changes - BEFORE</strong></td>
+</tr>
+<tr>
+<td style="font-size: 0; line-height: 10px; mso-line-height-rule: exactly;" height="10"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+<tr>
+<td style="font-size: 15px; line-height: 20px; font-family: Arial, Helvetica, sans-serif; color: #40413e;">One of the words in this sentence will be removed.</td>
+</tr>
+<tr>
+<td style="font-size: 0; line-height: 15px; mso-line-height-rule: exactly;" height="15"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+<tr>
+<td style="font-size: 15px; line-height: 20px; font-family: Arial, Helvetica, sans-serif; color: #40413e;">This link's URL will change:<span data-isspchar="true">&nbsp;</span><a href="https://cl.S7.exct.net/?qs=bccb80e9ca785c2066970ea64cbe967704eefb3bee79eded55b0ebca73adb761431f905ac0eeb8e5a35873b06fe68669ee16bb597b43e634" >LINK EXAMPLE HERE</a></td>
+</tr>
+<tr>
+<td style="font-size: 0; line-height: 10px; mso-line-height-rule: exactly;" height="10"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+<tr>
+<td style="font-size: 15px; line-height: 20px; font-family: Arial, Helvetica, sans-serif; color: #40413e;">One of the words in this sentence will be bolded.</td>
+</tr>
+<tr>
+<td style="font-size: 0; line-height: 10px; mso-line-height-rule: exactly;" height="10"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+<tr>
+<td style="font-size: 15px; line-height: 20px; font-family: Arial, Helvetica, sans-serif; color: #40413e;">One of the words in this sentence will be underlined.</td>
+</tr>
+<tr>
+<td style="font-size: 0; line-height: 10px; mso-line-height-rule: exactly;" height="10"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+<tr>
+<td style="font-size: 15px; line-height: 20px; font-family: Arial, Helvetica, sans-serif; color: #40413e;">The size of the text in this sentence will be increased.</td>
+</tr>
+<tr>
+<td style="font-size: 0; line-height: 10px; mso-line-height-rule: exactly;" height="10"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+<tr>
+<td style="font-size: 15px; line-height: 20px; font-family: Arial, Helvetica, sans-serif; color: #40413e;">The color of the text in this sentence will be changed.</td>
+</tr>
+<tr>
+<td style="font-size: 0; line-height: 10px; mso-line-height-rule: exactly;" height="10"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+<tr>
+<td style="font-size: 15px; line-height: 20px; font-family: Arial, Helvetica, sans-serif; color: #40413e;">The size of the text in this sentence will be reduced.</td>
+</tr>
+<tr>
+<td style="font-size: 0; line-height: 10px; mso-line-height-rule: exactly;" height="10"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+<tr>
+<td style="font-size: 15px; line-height: 20px; font-family: Arial, Helvetica, sans-serif; color: #40413e;">One of the words in this sentence will be italized.</td>
+</tr>
+<tr>
+<td style="font-size: 0; line-height: 10px; mso-line-height-rule: exactly;" height="10"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+<tr>
+<td style="font-size: 15px; line-height: 20px; font-family: Arial, Helvetica, sans-serif; color: #40413e;">An word will be added to this sentence.</td>
+</tr>
+<tr>
+<td style="font-size: 0; line-height: 10px; mso-line-height-rule: exactly;" height="10"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td width="20"></td>
+<td class="email_mhide">
+<table style="border-collapse: collapse;" width="100%" cellspacing="0" cellpadding="0" border="0"><colgroup><col/><col/><col/><col/></colgroup>
+<tbody>
+<tr>
+<td style="font-size: 0; line-height: 4px; mso-line-height-rule: exactly;" height="4"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+<tr>
+<td class="email_mhide" style="background-color: #faf9f5; border-collapse: collapse;" valign="top" align="right">This image will change:<img alt="" src="https://naehaspublictest.s3.amazonaws.com/integraperflongshotdashboard/53aa0314158476369143363b280b45ac/img_credit_card_d.jpg" style="display: block;" width="141" height="401" border="0"></td>
+</tr>
+<tr>
+<td style="font-size: 0; line-height: 4px; mso-line-height-rule: exactly;" height="4"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td class="email_mhide" width="4"></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style="background-color: #cecece;" width="1" bgcolor="#cecece"></td>
+</tr>
+<tr>
+<td colspan="4" style="font-size: 0; line-height: 1px; mso-line-height-rule: exactly; background-color: #cecece;" height="1" bgcolor="#cecece"><span data-isspchar="true">&nbsp;</span></td>
+</tr>
+</tbody>
+</table>
+<!--END - row1_section code -->
+										</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html><img src="https://cl.S7.exct.net/open.aspx?ffcb10-feca15747d64057a-fe631273756401757015-fe8b13727c660c7876-ff9c1572-fe6417737663047c741d-ffcd16" width="1" height="1">

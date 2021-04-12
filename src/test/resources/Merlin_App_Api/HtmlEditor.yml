@@ -1,0 +1,30 @@
+DocID_API:
+  endpoint: '/naehas/rs/htmleditor/editor/documents/info/get/1234/TEMPLATE_ID'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+
+Save_API:
+  endpoint: '/naehas/rs/htmleditor/editor/document/save/1234'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+
+Get_HTML_API:
+  endpoint: '/naehas/rs/htmleditor/editor/asset/get/1234/DOC_ID'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+
+Asset_API:
+  endpoint: '/naehas/rs-3.0.0/files/FOLDER_ID?fileFidelity=MID&page=0&pageSize=50'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+
+Asset_folder_API:
+  endpoint: '/naehas/rs-3.0.0/files/69577?fileFidelity=MID&page=0&pageSize=50'
+  statusCode: 200
+  headerMap:
+  requestBody: ""
+
